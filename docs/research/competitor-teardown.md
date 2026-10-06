@@ -334,6 +334,48 @@ Many replies are templates: about a quarter of MyFitnessPal's and YAZIO's, and h
 
 For us: stability is a feature. Before changing a screen people use every day, try it with a few users, and if it's a big change, offer it as an option first (YAZIO reviewers didn't mind AI entry, they minded losing Quick Add). Never put people's saved data at risk, and let them export it. After each MVP, watch how many complaints we get, not just the average rating.
 
+## How these apps make money
+
+All 15 apps are free to download except Paprika on the iPhone. They make money in five ways, and the way an app makes money shows up directly in its complaints.
+
+1. **A subscription for the extras, with ads in the free version** (MyFitnessPal, Lose It!, Cronometer, YAZIO). $24 to $80 a year, usually with a 7-day trial. These get the most complaints about paywalls and ads.
+2. **Nothing works without a subscription** (Cal AI, mise). A long setup quiz, then a 3-day trial that needs a card. Their biggest complaints are paying and surprise charges.
+3. **Free, paid for by ads and shops, with a cheap way to remove the ads** (Bring!, Listonic). About $9 to $16 a year. Bring! also earns from supermarket offers and sponsored products, which is how ads end up inside the list.
+4. **A cheap upgrade with no ads** (AnyList, KitchenPal, NoWaste, Mealime, Samsung Food). $3 to $7 a month, or $7 to $60 a year.
+5. **Pay once** (Paprika). Each device type is paid for separately. Lose It!, Listonic and NoWaste also sell a one-off "lifetime" version.
+
+SuperCook is the odd one out: free, with nothing to buy and no ads of its own.
+
+| App | How it charges | Price (US) | Ads in the free version | Other things for sale |
+|---|---|---|---|---|
+| MyFitnessPal | Subscription | Premium $19.99/month or $79.99/year, Premium+ costs more | Yes, including video ads with sound | |
+| Lose It! | Subscription, yearly only | $79.99/year | Yes, full-screen, plus partner promotions | Lifetime $299.99 |
+| Cronometer | Subscription | Gold $10.99/month or $59.99/year | Yes, full-screen video after the first few days | |
+| YAZIO | Subscription for 3 to 12 months | $23.90 to $47.90 a year in the App Store, prices vary | Yes, unskippable video ads | |
+| Cal AI | Subscription, nothing works without it | Plans from $2.99 to $29.99 | No | $0.99 to restore a lost streak |
+| mise | Subscription, nothing works without it | $9.99/month, yearly plans from $19.99 to $59.99 | No | "Win back" discount offers |
+| Bring! | Free, Premium removes ads | $1.99/month or $8.99/year | Yes, plus supermarket offers and sponsored products | |
+| Listonic | Free, Premium removes ads | $0.99 to $1.99/month or $10.49 to $15.99/year | Yes, full-screen and inside the list | Lifetime $13.99 to $19.99 |
+| AnyList | Free, Complete adds more | $9.99/year, or $14.99/year for a household | No | |
+| KitchenPal | Free, Premium adds more | $1.99 to $39.99 on Google Play | No | Family members get Premium free |
+| NoWaste | Free, Pro adds more | $6.99/year | No | Lifetime $29.99 |
+| Mealime | Free, Pro adds more (free for everyone until it closes) | $2.99/month | No | Sends your list to grocery delivery |
+| Samsung Food | Free, Food+ adds more | $6.99/month or $59.99/year | No, but the recipe sites it opens have ads | Grocery delivery from 23 retailers |
+| Paprika | Pay once per device type | $4.99 on iPhone. On Android it's free with limits, then a one-off unlock | No | Mac and Windows apps sold separately |
+| SuperCook | Free | | No | |
+
+Where the ads show up:
+
+- **In the middle of logging.** Full-screen and video ads after you add a food (MyFitnessPal, Cronometer, Lose It!, YAZIO).
+- **Inside the list.** Sponsored products added to lists or swapped in for what you typed (Listonic, Bring!), and supermarket brochures (Bring!).
+- **As partner promotions.** For example, GLP-1 weight loss drugs in Lose It!.
+- **Through the content.** Recipe websites full of ads (Samsung Food, SuperCook).
+- **After paying.** Some paying users still see ads or promotions (Listonic, Bring!, Lose It!).
+
+What else is for sale: subscriptions by the week (mise on iPhone), month, three months, half year or year; household plans (AnyList, KitchenPal); lifetime unlocks (Lose It!, Listonic, NoWaste); paying once per device type (Paprika); small extras like Cal AI's $0.99 streak restore; and discount tricks like mise's "win back" offer, YAZIO's discount wheel and Lose It!'s "final call" lifetime offers.
+
+For us: we're a course project and won't charge, but the pattern is still useful. The best-rated apps here, AnyList and Paprika, cost $5 to $15 a year or once, show no ads, and don't lock the basics. The apps with the angriest reviews lock the basics, put ads in the middle of logging, or hide the price until the end of setup. If we ever show a price, it should come first.
+
 ## Questions this suggests for the interviews
 
 These ask about what people have done, not what they would do, and don't pitch anything (the same rules as the interview guide):
