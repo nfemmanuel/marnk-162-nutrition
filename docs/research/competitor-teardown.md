@@ -1,10 +1,12 @@
 # Competitor teardown: where nutrition apps let people down
 
-Ticket [NUT-13](https://marnk-162.atlassian.net/browse/NUT-13), part of the Discovery epic [NUT-12](https://marnk-162.atlassian.net/browse/NUT-12). Written by Alex Korablev. Data collected on 5 October 2026.
+Ticket [NUT-13](https://marnk-162.atlassian.net/browse/NUT-13), part of the Discovery epic [NUT-12](https://marnk-162.atlassian.net/browse/NUT-12). Written by Alex Korablev. First round (four calorie trackers) collected on 5 October 2026, second round (11 more apps) on 6 October 2026.
 
-Before we ask people how they cook and eat, I wanted to know where the apps they already use let them down. That way we don't rebuild something that already exists, and our interview questions can go straight at real problems. I read the 1 and 2 star reviews of MyFitnessPal, Cronometer and Lose It!, plus Cal AI as the newer AI-first app, and sorted them by what people were unhappy about.
+Before we ask people how they cook and eat, I wanted to know where the apps they already use let them down. That way we don't rebuild something that already exists, and our interview questions can go straight at real problems. I read the 1 and 2 star reviews of MyFitnessPal, Cronometer and Lose It!, plus Cal AI as the newer AI-first app, and sorted them by what people were unhappy about. In a second round I added 11 more apps (shopping lists, pantry trackers, meal planners and YAZIO) to check whether keeping track of food at home is a pain point, how the apps hold up over updates, how they make money, and what people use here in Berlin.
 
 ## The short version
+
+### Calorie trackers
 
 These are the five complaints that come up most in 2,000 recent 1 and 2 star Google Play reviews (500 per app):
 
@@ -16,12 +18,26 @@ These are the five complaints that come up most in 2,000 recent 1 and 2 star Goo
 
 Paywalls, prices and surprise charges together come up in 28% of reviews, almost as often as the app breaking. Just outside the top five is **numbers you can't trust** (8%), and that's where the AI app struggles most: 84 of Cal AI's 500 reviews say its AI estimates are wrong.
 
+### Shopping lists, pantry trackers and meal planners
+
+- **Keeping track of what's at home is a chore people drop.** Dedicated pantry apps are tiny next to shopping list apps, and their inventories usually die during the first setup. Nothing updates by itself when you shop or cook. Whether not knowing what's at home actually stops people from cooking is a question for the interviews.
+- **Shopping lists are about sharing, and the business model leaks into them.** Sponsored products end up on shared lists in Listonic and Bring!.
+- **Meal plans don't fit real cooking.** It's the biggest complaint about Mealime and near the top for SuperCook and mise: no cooking for one, diets ignored, the same recipes again, and price estimates far off.
+- **The closest competitor is brand new.** mise launched in June 2026 and is already #10 in Germany's Food & Drink chart. It plans meals around your budget, supermarket and what's at home, but everything sits behind a paywall that comes straight after a long setup quiz.
+- **Big changes break trust.** MyFitnessPal got about four times its usual number of complaints in the month its redesign shipped, and Mealime closes on 21 October 2026.
+- **In Berlin, people use YAZIO and Bring!,** not the American apps.
+
 What this means for us:
 
 - Most of the anger is about anything that slows down logging: a paid barcode scanner, an extra tap, an ad in the middle of typing. Fast logging is worth protecting above almost everything else.
 - Budget users get the worst version of these apps (ads, a locked scanner, trial traps), and they notice. Being free, ad-free and upfront would already set us apart for budget students.
 - AI photo logging is far from solved. If we use AI, people need to see what it guessed and be able to fix it in one tap.
 - Syncing with step counters and watches is a steady source of bugs in every app, so it's probably not one for MVP 1.
+- Knowing what's at home should be a side effect of the shopping list and the recipes people cook, never a setup step.
+- Batch cooking is a gap. Nobody adds up amounts, scales recipes or keeps track of cooked portions well.
+- Let people try the app before asking for an account, a long quiz or a card.
+- Change everyday screens carefully, and never put people's saved data at risk.
+- In Berlin, think about Bring! and German supermarkets (REWE, EDEKA, Lidl, Aldi), not American ones.
 
 ## The four calorie trackers at a glance
 
@@ -161,7 +177,7 @@ Cal AI's own FAQ says its scans are about 80% accurate. For us: if we estimate f
 
 ## Eleven more apps: shopping lists, pantry trackers and meal planners
 
-In a second round I added 11 apps, to see whether keeping track of food at home is a real pain point and how the apps that plan meals and shopping hold up. I picked the biggest shared shopping list apps, two pantry trackers, five meal planning and recipe apps (including mise, a new app that is very close to our idea), and YAZIO, the calorie tracker most people use in Germany. I read their newest 1 and 2 star Google Play reviews the same way as in the first round, 3,870 reviews in total. For Bring! I used the German store, where most of its users are.
+The second round adds 11 apps, to see whether keeping track of food at home is a real pain point and how the apps that plan meals and shopping hold up. I picked the biggest shared shopping list apps, two pantry trackers, five meal planning and recipe apps (including mise, a new app that is very close to our idea), and YAZIO, the calorie tracker most people use in Germany. I read their newest 1 and 2 star Google Play reviews the same way as in the first round, 3,870 reviews in total. For Bring! I used the German store, where most of its users are.
 
 | App | What it does | Made by | Google Play installs | Rating (Play / App Store) |
 |---|---|---|---:|---|
@@ -263,7 +279,7 @@ Most of these apps promise to save time. The reviews say the time actually goes 
 | A weekly plan that turns into a shopping list | Mealime, mise, Samsung Food, AnyList (paid), MyFitnessPal Premium+ | Plans don't fit real life: no cooking for one, diets ignored, the same recipes again. Lists miss ingredients, mise's budget estimates are far off, and the best parts are paid |
 | Saving recipes from websites straight into a plan or list | AnyList, Paprika, Samsung Food, Bring! | Imports fail or come out garbled, the steps go missing, and AnyList and Mealime limit free imports |
 | Adding to the list by voice | Bring!, AnyList | Google Assistant support ended in 2023 and an Alexa change broke adding by voice in 2024 |
-| Getting started quickly | Almost none | Long quizzes (YAZIO, Lose It!, mise), an account before you can try anything (AnyList), or a paywall before you can try anything (Cal AI, mise) |
+| Getting started quickly | Almost none | Long quizzes (YAZIO, Lose It!, mise), an account before you see the app (AnyList), or a paywall before you can try anything (Cal AI, mise) |
 
 For us: the time to beat is setup and entry. A first plan and shopping list within a minute or two, without an account wall or a long quiz, would already be faster than most of these apps. Once people rely on a shortcut, keep it.
 
@@ -297,7 +313,7 @@ The months where an app got far more complaints than usual, and what reviewers s
 | YAZIO | May 2026 | 165 | about 100 | An update on 4 May made the app crash |
 | Cronometer | June to September 2026 | 53 to 69 a month | about 42 | No single update. Ads and bugs slowly got worse |
 
-The pattern: the biggest jumps come from changing a screen people use every day, and the worst single days come from people losing access to their own data. Mealime is the extreme case, since the whole app closes on 21 October 2026.
+The pattern: the biggest jumps come from changing a screen people use every day, and the other sharp spikes come from people losing access to their own lists and recipes (Bring!, Samsung Food). Mealime is the extreme case, since the whole app closes on 21 October 2026.
 
 ### Apps that stayed steady
 
@@ -415,8 +431,14 @@ These ask about what people have done, not what they would do, and don't pitch a
 - "Have you ever paid for a food or fitness app? What made you pay, or not?" (tests guess 1, cost first)
 - "Tell me about the last meal you cooked at home. If you had to log it, how would you work out what was in it?"
 - "Has an app ever surprised you with a charge, an ad or a change you didn't ask for? What did you do?"
+- "Before your last big shop, how did you know what you already had at home?" (tests guess 3, knowing what's in the fridge)
+- "How do you and the people you live with keep track of what to buy? Can you show me your last shopping list?"
+- "Tell me about the last time you cooked more than one meal's worth at once. How did you work out how much to buy, and what happened to the rest?"
+- "Which apps, if any, do you use for food, shopping or recipes?" (listen for Bring! and YAZIO)
 
 ## How I did it
+
+First round (calorie trackers, 5 October 2026):
 
 - **Apps.** MyFitnessPal, Cronometer and Lose It! from the ticket, plus Cal AI as the AI-first app. Cal AI is the best-known app built around photo logging (about 370,000 App Store ratings), and MyFitnessPal bought it in [March 2026](https://news.myfitnesspal.com/myfitnesspal-expands-its-position-as-the-leading-player-in-digital-nutrition-tracking-with-cal-ai-acquisition/).
 - **Google Play.** The 500 newest 1 and 2 star reviews for each app (250 of each rating) from the US store, collected on 5 October 2026. They cover different stretches of time because some apps get far more bad reviews than others. MyFitnessPal's 500 all came from the last three and a half months, while Cronometer's and Cal AI's go back about eighteen months.
@@ -424,12 +446,22 @@ These ask about what people have done, not what they would do, and don't pitch a
 - **Sorting.** I wrote a list of 19 complaint types (in the appendix) and gave every review one or more of them. I used an AI assistant to read and tag all 2,000 reviews against that list. A second, separate tagging pass on a random 40 reviews agreed with it: at least one shared tag on all 40, and exactly the same tags on 36.
 - **Prices and paywalls.** From each app's US App Store listing and its own help pages, checked on 5 October 2026.
 
+Second round (11 more apps, 6 October 2026):
+
+- **Apps.** Ten apps chosen to cover our two personas and Berlin: three shared shopping lists, two pantry trackers, four meal planning and recipe apps, and YAZIO. I added mise as an eleventh after finding it in Germany's Food & Drink chart.
+- **Google Play.** The newest 1 and 2 star reviews for each app (up to 250 of each rating), 3,870 in total. Bring!'s come from the German store and mise's from the UK, US and German stores; the rest are from the US store.
+- **Sorting.** The same complaint types plus three new ones (sharing, upkeep, content), again tagged with an AI assistant. A second, separate pass on a random 44 of these reviews agreed with it: at least one shared tag on 43, and exactly the same tags on 38.
+- **Updates over time.** About 33,000 Google Play reviews of every star rating, July 2025 to October 2026, for 13 of the apps, counted by month. Developer replies come from the 1 and 2 star samples.
+- **Prices, regions and charts.** US App Store and Google Play listings and the apps' own help pages, App Store rating counts in each country's store, and the top free charts for Germany, the US and the UK, all checked on 6 October 2026.
+
 Limits to keep in mind:
 
-- These are the unhappiest users on purpose. All four apps average 4.4 to 4.8 stars, and 1 and 2 star ratings are only 5 to 10% of each app's ratings on Google Play.
-- It's mostly Android users in the US writing in English.
+- These are the unhappiest users on purpose. All four calorie trackers average 4.4 to 4.8 stars, and 1 and 2 star ratings are only 5 to 10% of each app's ratings on Google Play.
+- It's mostly Android users in the US writing in English, apart from Bring! and part of mise.
 - Reddit isn't included.
 - 112 of Cal AI's reviews don't name a specific problem (many just say "nice" under a 1 or 2 star rating), so its other numbers are a bit lower than they would be otherwise.
+- The second-round samples cover very different periods, from two months for mise to almost nine years for KitchenPal, because smaller apps get fewer bad reviews.
+- Rating counts per country stand in for how many people use an app there. They aren't download numbers, and chart positions change every day.
 
 ## Sources
 
@@ -446,6 +478,9 @@ Limits to keep in mind:
 - Google Play, second round: [Bring!](https://play.google.com/store/apps/details?id=ch.publisheria.bring), [Listonic](https://play.google.com/store/apps/details?id=com.l), [AnyList](https://play.google.com/store/apps/details?id=com.purplecover.anylist), [KitchenPal](https://play.google.com/store/apps/details?id=fr.icuisto.icuisto), [NoWaste](https://play.google.com/store/apps/details?id=com.khcreations.nowaste), [Mealime](https://play.google.com/store/apps/details?id=com.mealime), [Samsung Food](https://play.google.com/store/apps/details?id=com.foodient.whisk), [Paprika](https://play.google.com/store/apps/details?id=com.hindsightlabs.paprika.android.v3), [SuperCook](https://play.google.com/store/apps/details?id=com.supercook.app), [mise](https://play.google.com/store/apps/details?id=com.gregorytaylor.shopping), [YAZIO](https://play.google.com/store/apps/details?id=com.yazio.android)
 - App Store, second round: [Bring!](https://apps.apple.com/us/app/id580669177), [Listonic](https://apps.apple.com/us/app/id331302745), [AnyList](https://apps.apple.com/us/app/id522167641), [KitchenPal](https://apps.apple.com/us/app/id1084982489), [NoWaste](https://apps.apple.com/us/app/id926211004), [Mealime](https://apps.apple.com/us/app/id1079999103), [Samsung Food](https://apps.apple.com/us/app/id1133637674), [Paprika](https://apps.apple.com/us/app/id1303222868), [SuperCook](https://apps.apple.com/us/app/id1477747816), [mise](https://apps.apple.com/us/app/id6777471316), [YAZIO](https://apps.apple.com/us/app/id946099227)
 - Mealime, [Mealime is closing](https://www.mealime.com/closing)
+- Listonic Help Center, [What is Listonic Premium?](https://helpcenter.listonic.com/what-is-listonic-premium/)
+- Bring!, [website](https://www.getbring.com/en/home)
+- Apple App Store top free charts, checked on 6 October 2026: Food & Drink and Health & Fitness in Germany, the US and the UK, and Productivity in Germany, Switzerland, Austria and the US
 
 ## Appendix: complaint types and counts
 
