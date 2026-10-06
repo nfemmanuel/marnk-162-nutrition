@@ -23,7 +23,7 @@ What this means for us:
 - AI photo logging is far from solved. If we use AI, people need to see what it guessed and be able to fix it in one tap.
 - Syncing with step counters and watches is a steady source of bugs in every app, so it's probably not one for MVP 1.
 
-## The four apps at a glance
+## The four calorie trackers at a glance
 
 US prices from the App Store and each app's own help pages on 5 October 2026. Prices change by country (from Europe, MyFitnessPal's website showed me €9.99 a month or €49.99 a year), so treat them as a rough guide.
 
@@ -34,7 +34,7 @@ US prices from the App Store and each app's own help pages on 5 October 2026. Pr
 | **Lose It!**<br>4.6 / 4.8 | Premium $79.99/year, yearly only. Lifetime $299.99 | Calorie budget, food database, weight loss plan. Shows ads | Barcode scanner, photo and voice logging, macro and nutrient goals, syncing watches and trackers, logging meals ahead, fasting, meal plans, no ads |
 | **Cal AI**<br>4.6 / 4.8. Owned by MyFitnessPal since March 2026 | Plans from $2.99 to $29.99 in the App Store. Reviewers mostly mention about $30 a year. The 3-day trial needs a card | The setup quiz and a suggested calorie plan. Reviewers say you can't log anything without a trial or subscription | Everything else, including the photo scanning the app is built around |
 
-## The five biggest complaints
+## The five biggest complaints about calorie trackers
 
 How many of each app's 500 reviews mention each complaint. One review can mention several.
 
@@ -159,6 +159,96 @@ Cal AI's own FAQ says its scans are about 80% accurate. For us: if we estimate f
 - **Unhealthy goals** (51 reviews). Cal AI gave one user a target of 736 calories a day for six months. Lose It! gave another macro goals that added up to over 400 calories more than their calorie budget.
 - **Support doesn't answer** (90 reviews). Chatbots, ticket numbers and silence.
 
+## Eleven more apps: shopping lists, pantry trackers and meal planners
+
+In a second round I added 11 apps, to see whether keeping track of food at home is a real pain point and how the apps that plan meals and shopping hold up. I picked the biggest shared shopping list apps, two pantry trackers, five meal planning and recipe apps (including mise, a new app that is very close to our idea), and YAZIO, the calorie tracker most people use in Germany. I read their newest 1 and 2 star Google Play reviews the same way as in the first round, 3,870 reviews in total. For Bring! I used the German store, where most of its users are.
+
+| App | What it does | Made by | Google Play installs | Rating (Play / App Store) |
+|---|---|---|---:|---|
+| **Bring!** | Shared shopping lists, recipes, supermarket offers | Bring! Labs, Switzerland | 10M+ | 4.1 / 4.8 |
+| **Listonic** | Shared shopping lists | Listonic, Poland | 10M+ | 4.6 / 4.7 |
+| **AnyList** | Shopping lists, recipes, meal planning calendar | Purple Cover, US | 1M+ | 4.8 / 4.9 |
+| **KitchenPal** | Pantry with expiry dates and barcode scanning, lists, recipes | iCuisto, Singapore | 100k+ | 4.5 / 4.5 |
+| **NoWaste** | Fridge, freezer and pantry lists with expiry reminders | KH Creations, Denmark | 50k+ | 2.8 / 4.2 |
+| **Mealime** | Weekly meal plan that turns into a shopping list | Mealime, owned by the US supermarket group Albertsons | 1M+ | 4.6 / 4.8 |
+| **Samsung Food** | Saved recipes, AI meal plans, shopping lists, a list of what's in your fridge | Samsung (formerly Whisk) | 1M+ | 4.5 / 4.8 |
+| **Paprika** | Recipe manager with meal plans, pantry and lists, paid once | Hindsight Labs, US | 500k+ | 4.9 / 4.9 |
+| **SuperCook** | Recipes from the ingredients you already have | SuperCook, US | 1M+ | 4.6 / 4.8 |
+| **mise** | Weekly meal plans from your diet, budget, supermarket and what's at home | TEGS Labs, UK (launched June 2026) | 100k+ | 4.7 / 4.7 |
+| **YAZIO** | Calorie and fasting tracker | YAZIO, Germany | 50M+ | 4.4 / 4.7 |
+
+How many of each app's reviews mention each complaint, grouped the same way as for the calorie trackers. The biggest complaint for each app is in bold. The smaller apps get fewer bad reviews, so their samples reach further back (to 2017 for KitchenPal) and mix old and new problems.
+
+| Complaint | Bring! | Listonic | AnyList | KitchenPal | NoWaste | Mealime | Samsung Food | Paprika | SuperCook | YAZIO | mise |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Reviews read | 500 | 500 | 360 | 271 | 29 | 500 | 475 | 296 | 304 | 500 | 135 |
+| The app breaks | **39%** | 26% | 18% | **46%** | **52%** | 23% | **40%** | **37%** | **39%** | 18% | 7% |
+| Paying more for less | 3% | 7% | 24% | 21% | 10% | 28% | 8% | 35% | 0% | 16% | **53%** |
+| Updates that make it slower | 26% | 10% | 11% | 12% | 0% | 6% | 25% | 11% | 2% | **23%** | 0% |
+| Ads and upsell | 11% | **36%** | 2% | 0% | 3% | 2% | 13% | 1% | 5% | **23%** | 1% |
+| Surprise charges | 0% | 2% | 2% | 4% | 3% | 13% | 1% | 17% | 0% | 10% | 28% |
+| Hard to start | 4% | 1% | **38%** | 2% | 14% | 1% | 5% | 0% | 1% | **23%** | 11% |
+| Plans and recipes don't fit | 1% | 0% | 0% | 9% | 0% | **31%** | 6% | 0% | 30% | 1% | 27% |
+| Sharing breaks | 5% | 8% | 2% | 3% | 0% | 2% | 4% | 9% | 0% | 1% | 1% |
+| Keeping the pantry up to date | 0% | 0% | 0% | 7% | 14% | 0% | 0% | 1% | 3% | 0% | 0% |
+
+### Shopping lists: Bring!, Listonic and AnyList
+
+- **Sharing is why people use them, and it hurts when it breaks.** People share a list with a partner, family or housemates. The angry reviews are about invites that do nothing, edits that vanish or overwrite each other, and both people buying the same thing.
+- **The business model ends up inside the list.** Ads are Listonic's biggest complaint, in over a third of its reviews. In both Listonic and Bring!, reviewers say sponsored brand products landed on their shared list or replaced what they typed, and some only noticed at home. Bring! users who pay for Premium still see "offers". Listonic also added an AI feature in March 2026 that can't be turned off (50 reviews object to it being there at all) and a consent screen listing hundreds of data partners.
+- **Supermarket offers matter.** The biggest wave of Bring! complaints in our sample came in late 2024, when the Aldi, Lidl, REWE and EDEKA brochures disappeared from the app. People use it to plan their shop around deals.
+- **AnyList's biggest complaint is having to make an account before trying it** (38% of its reviews), often together with worries about what happens to their email address.
+- **Amounts don't add up.** One Bring! reviewer put two egg recipes on the list and got two separate amounts in a note instead of one total. For batch cooking, that total is the whole point.
+- **Hardly anyone asks these apps to track what's at home.** A few want a permanent list of staples, quantities or expiry dates.
+
+What reviewers said:
+
+- A Listonic user says the app put about 20 brand-name products on the list they share with their partner, more than once. (Google Play, 1★, 20 Feb 2025)
+- A Bring! user paid almost €5 for a lotion they thought their partner had added. At home they spotted a small ad marker next to it. (Google Play, German store, 1★, 29 Nov 2025)
+- A Bring! user says the Aldi, Lidl and REWE offers vanished without explanation, and without them the app is much less useful. (Google Play, German store, 1★, 18 Oct 2024)
+
+### Pantry trackers: is keeping track of food a pain point?
+
+- **Dedicated pantry apps are small.** KitchenPal has over 100,000 Android installs and NoWaste over 50,000, against over 10 million each for Bring! and Listonic. NoWaste is rated 2.8 on Google Play.
+- **The inventory usually dies at the start, not later.** Getting a kitchen into the app takes hours of scanning. Barcodes often aren't recognised, free versions cap how many items you can add, and some people lost everything they'd entered.
+- **Nothing updates by itself.** Food isn't taken off when you cook, and in KitchenPal, subtracting what you've used or moving bought items from the shopping list into the pantry are paid features.
+- **SuperCook, the "what can I make with what I have" app, shows the same thing from the other side.** People don't want to enter their whole pantry and would rather start from two or three ingredients, and a common complaint is that its recipes still need things you don't have.
+
+What reviewers said:
+
+- A KitchenPal user says almost everything is now paid, including adding items by hand and moving them from the shopping cart into the pantry, which makes the app useless to them. (Google Play, 2★, 29 Aug 2026)
+- A NoWaste user chose the UK database and found it recognised one of the 29 items in their fridge. (Google Play, 1★, 8 Aug 2021)
+- A SuperCook user hoped to enter two or three main ingredients, but the app wanted everything in the pantry, staples included, which took longer than it was worth. (Google Play, 2★, 11 Jun 2024)
+
+For us: the reviews show that keeping an inventory is a chore people drop, but they can't tell us whether not knowing what's at home stops people from cooking. That's guess 3 in the [interview guide](https://marnk-162.atlassian.net/wiki/spaces/SD/pages/9699331), so it's worth asking. If we track what's at home, it should come out of things people already do, like ticking off the shopping list or cooking a recipe, and never be a setup step.
+
+### Meal planners and recipe apps: Mealime, Samsung Food, Paprika, SuperCook and mise
+
+- **Plans don't fit how people actually cook.** It's the biggest complaint about Mealime (31%) and close to the top for SuperCook (30%) and mise (27%). People can't cook for one, diet and allergy settings get ignored (mise and Samsung Food's AI planner), and recipes repeat after a week or two (mise). Reviewers say mise plans about four dinners no matter how many days they ask for.
+- **The shopping list from the plan goes wrong.** Mealime's lists have left out ingredients or not updated when the plan changed. mise's price estimates can be off by up to double, and its lists include things the chosen supermarket doesn't sell.
+- **Recipe import is the big time saver, and it breaks.** In Samsung Food, saving a recipe from a website often fails or leaves out the steps, and import problems are one of the most common complaints about Paprika.
+- **These apps change under their users.** Mealime closes on 21 October 2026 and moves into the apps of a US supermarket chain, and all personal data will be deleted ([Mealime's announcement](https://www.mealime.com/closing)). Samsung Food switched sign-in to Samsung accounts in 2026, and some people lost access to their saved recipes. Paprika charges again for each device and each new major version.
+- **mise, the newest app and the closest to our idea, has a hard paywall straight after a long setup quiz.** Paying is its biggest complaint (53%), then surprise charges (28%), and reviewers mostly quit before they get to try planning around what's at home.
+
+What reviewers said:
+
+- A mise user asked for a seven-day plan and got four dinners. (Google Play, 1★, 10 Aug 2026)
+- Another says mise estimated a week's shop at about 66, and the same list at the same store came to about 127. (Google Play, 2★, 2 Sep 2026)
+- A Samsung Food user says its planner keeps suggesting breakfasts that take an hour on workdays and ignores their weekly budget. (Google Play, 1★, 20 Jul 2026)
+- A long-time Mealime user says the replacement app needs a supermarket that doesn't serve their area, so they can't use it. (Google Play, 1★, 6 Sep 2026)
+
+### YAZIO, the calorie tracker most people use in Germany
+
+- **It has MyFitnessPal's problems plus a few of its own.** Its biggest complaints are a setup quiz of 20 to 40 minutes that comes back after a few days away (23% of reviews), unskippable video ads in the free version plus constant pushing of PRO (23%), and updates that took away things people used (23%). In July 2026, Quick Add was replaced by AI text entry.
+- **AI estimates are often off** (10% of reviews), and 8% object to the AI being there at all.
+- **A few reviewers say logging food for the next day now needs PRO**, which gets in the way of meal prep.
+
+What reviewers said:
+
+- A YAZIO user checked their screen time afterwards: setup took 40 minutes. (Google Play, 2★, 6 Aug 2026)
+- Another says each entry in the free version meant two video ads and then four screens pushing PRO. (Google Play, 1★, 17 Jun 2026)
+- Another says the July update took away the quick way to log a meal with your own name and nutrients. (Google Play, 1★, 30 Jul 2026)
+
 ## Questions this suggests for the interviews
 
 These ask about what people have done, not what they would do, and don't pitch anything (the same rules as the interview guide):
@@ -196,8 +286,13 @@ Limits to keep in mind:
 - MyFitnessPal, [Cal AI acquisition announcement](https://news.myfitnesspal.com/myfitnesspal-expands-its-position-as-the-leading-player-in-digital-nutrition-tracking-with-cal-ai-acquisition/) (2 Mar 2026)
 - TechCrunch, [Apple's Cal AI crackdown signals it's still policing the App Store](https://techcrunch.com/2026/04/21/apples-cal-ai-crackdown-signals-its-still-policing-the-app-store/) (21 Apr 2026)
 - PiunikaWeb, [MyFitnessPal users complain new Today tab update makes the app harder to use](https://piunikaweb.com/2026/04/24/myfitnesspal-new-update-complaints/) (24 Apr 2026)
+- Google Play, second round: [Bring!](https://play.google.com/store/apps/details?id=ch.publisheria.bring), [Listonic](https://play.google.com/store/apps/details?id=com.l), [AnyList](https://play.google.com/store/apps/details?id=com.purplecover.anylist), [KitchenPal](https://play.google.com/store/apps/details?id=fr.icuisto.icuisto), [NoWaste](https://play.google.com/store/apps/details?id=com.khcreations.nowaste), [Mealime](https://play.google.com/store/apps/details?id=com.mealime), [Samsung Food](https://play.google.com/store/apps/details?id=com.foodient.whisk), [Paprika](https://play.google.com/store/apps/details?id=com.hindsightlabs.paprika.android.v3), [SuperCook](https://play.google.com/store/apps/details?id=com.supercook.app), [mise](https://play.google.com/store/apps/details?id=com.gregorytaylor.shopping), [YAZIO](https://play.google.com/store/apps/details?id=com.yazio.android)
+- App Store, second round: [Bring!](https://apps.apple.com/us/app/id580669177), [Listonic](https://apps.apple.com/us/app/id331302745), [AnyList](https://apps.apple.com/us/app/id522167641), [KitchenPal](https://apps.apple.com/us/app/id1084982489), [NoWaste](https://apps.apple.com/us/app/id926211004), [Mealime](https://apps.apple.com/us/app/id1079999103), [Samsung Food](https://apps.apple.com/us/app/id1133637674), [Paprika](https://apps.apple.com/us/app/id1303222868), [SuperCook](https://apps.apple.com/us/app/id1477747816), [mise](https://apps.apple.com/us/app/id6777471316), [YAZIO](https://apps.apple.com/us/app/id946099227)
+- Mealime, [Mealime is closing](https://www.mealime.com/closing)
 
 ## Appendix: complaint types and counts
+
+### First round: calorie trackers
 
 Google Play reviews per app (out of 500 each). The five complaints above group these: "the app breaks" is bugs plus syncing, "paying more for less" is paywall plus price, "updates that make logging slower" is redesign plus logging effort, "ads that get in the way" is ads plus upsell, and "numbers you can't trust" is food data plus AI accuracy.
 
@@ -222,3 +317,33 @@ Google Play reviews per app (out of 500 each). The five complaints above group t
 | Upsell | Constant pushing of the app's own premium | 11 | 6 | 19 | 3 | 39 |
 | Privacy | Data sharing, spam, breaches | 12 | 6 | 12 | 5 | 35 |
 | Unwanted AI | Doesn't want AI in the app at all | 4 | 3 | 1 | 0 | 8 |
+
+### Second round: lists, pantry trackers and meal planners
+
+Google Play reviews per app, with the same complaint types plus three new ones for these apps: sharing (shared lists or plans don't sync between people), upkeep (keeping track of what's at home takes too much work) and content (recipes or meal plans don't suit people). Bring! reviews are from the German store.
+
+| Complaint type | Bring! | Listonic | AnyList | KitchenPal | NoWaste | Mealime | Samsung Food | Paprika | SuperCook | YAZIO | mise | Total |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Reviews read | 500 | 500 | 360 | 271 | 29 | 500 | 475 | 296 | 304 | 500 | 135 | 3,870 |
+| Bugs | 138 | 126 | 33 | 124 | 15 | 104 | 175 | 87 | 116 | 74 | 10 | 1,002 |
+| Paywall | 3 | 24 | 70 | 53 | 3 | 114 | 31 | 32 | 0 | 65 | 57 | 452 |
+| Redesign | 76 | 42 | 22 | 2 | 0 | 17 | 98 | 15 | 2 | 70 | 0 | 344 |
+| Ads | 55 | 174 | 1 | 1 | 0 | 4 | 56 | 2 | 14 | 71 | 0 | 378 |
+| Billing | 0 | 10 | 6 | 11 | 1 | 65 | 5 | 50 | 0 | 51 | 38 | 237 |
+| Other | 32 | 23 | 20 | 12 | 4 | 12 | 37 | 20 | 28 | 21 | 5 | 214 |
+| Logging effort | 61 | 14 | 17 | 30 | 0 | 13 | 26 | 21 | 5 | 67 | 0 | 254 |
+| Price | 11 | 13 | 28 | 6 | 1 | 48 | 12 | 78 | 0 | 19 | 21 | 237 |
+| Search | 4 | 9 | 1 | 46 | 1 | 14 | 39 | 3 | 52 | 25 | 0 | 194 |
+| Onboarding | 20 | 3 | 136 | 5 | 4 | 6 | 25 | 0 | 2 | 115 | 15 | 331 |
+| AI accuracy | 1 | 1 | 0 | 4 | 0 | 0 | 14 | 0 | 9 | 52 | 2 | 83 |
+| Sync | 61 | 8 | 32 | 0 | 0 | 12 | 18 | 26 | 2 | 19 | 0 | 178 |
+| Support | 17 | 23 | 12 | 7 | 0 | 14 | 10 | 53 | 3 | 17 | 2 | 158 |
+| Missing feature | 114 | 29 | 31 | 29 | 4 | 79 | 81 | 37 | 34 | 72 | 21 | 531 |
+| Food data | 2 | 2 | 1 | 38 | 4 | 2 | 7 | 0 | 6 | 5 | 10 | 77 |
+| Goals | 0 | 0 | 0 | 0 | 0 | 0 | 10 | 0 | 0 | 10 | 0 | 20 |
+| Upsell | 1 | 10 | 7 | 0 | 1 | 6 | 5 | 0 | 0 | 74 | 1 | 105 |
+| Privacy | 26 | 58 | 22 | 14 | 0 | 18 | 9 | 0 | 5 | 7 | 1 | 160 |
+| Unwanted AI | 0 | 50 | 0 | 0 | 0 | 0 | 3 | 1 | 0 | 39 | 9 | 102 |
+| Sharing (new) | 23 | 39 | 8 | 8 | 0 | 8 | 20 | 26 | 1 | 4 | 1 | 138 |
+| Upkeep (new) | 0 | 0 | 0 | 20 | 4 | 0 | 0 | 4 | 8 | 0 | 0 | 36 |
+| Content (new) | 3 | 0 | 0 | 24 | 0 | 153 | 30 | 0 | 92 | 3 | 36 | 341 |
