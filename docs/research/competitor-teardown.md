@@ -376,6 +376,36 @@ What else is for sale: subscriptions by the week (mise on iPhone), month, three 
 
 For us: we're a course project and won't charge, but the pattern is still useful. The best-rated apps here, AnyList and Paprika, cost $5 to $15 a year or once, show no ads, and don't lock the basics. The apps with the angriest reviews lock the basics, put ads in the middle of logging, or hide the price until the end of setup. If we ever show a price, it should come first.
 
+## Berlin and other regions
+
+Most of the first-round apps are American, and it shows in where people use them. The App Store doesn't publish downloads per country, but it does show how many people have rated an app in each country's store, which is a decent stand-in for how many people use it there. Numbers from 6 October 2026:
+
+| App | US | UK | Germany | Switzerland | Austria |
+|---|---:|---:|---:|---:|---:|
+| MyFitnessPal | 2,372k | 473k | 80k | 15k | 11k |
+| Lose It! | 780k | 41k | 4.0k | 1.2k | 401 |
+| Cal AI | 368k | 27k | 10k | 2.1k | 1.5k |
+| Cronometer | 99k | 6.9k | 1.4k | 397 | 240 |
+| **YAZIO** | 51k | 12k | **445k** | 37k | 39k |
+| **Bring!** | 9.9k | 6.6k | **162k** | 55k | 21k |
+| Listonic | 10k | 2.0k | 3.8k | 986 | 428 |
+| AnyList | 81k | 3.4k | 635 | 181 | 80 |
+| Mealime | 54k | 2.1k | 198 | 4 | 17 |
+| Paprika | 54k | 2.8k | 2.1k | 651 | 161 |
+| SuperCook | 22k | 2.7k | 141 | 50 | 29 |
+| Samsung Food | 6.4k | 1.8k | 161 | 46 | 23 |
+| mise | 3.0k | 1.2k | 945 | 33 | 57 |
+| NoWaste | 751 | 355 | 258 | 101 | 42 |
+| KitchenPal | 650 | 88 | 27 | 29 | 5 |
+
+- **In Germany the calorie tracker is YAZIO, not MyFitnessPal.** It has more than five times as many German ratings, and on 6 October it was #4 in Germany's Health & Fitness chart, with MyFitnessPal at #57 and Cal AI at #90. In the US chart, Cal AI was #7 and MyFitnessPal #9.
+- **Bring! is the shared shopping list in German-speaking countries.** It has 162k German ratings against under 10k in the US, and ranks #31 in Productivity in Germany and #20 in Switzerland, while it doesn't make the US top 100. Bring! says [20 million people](https://www.getbring.com/en/home) use it.
+- **The US meal planners barely exist here.** Mealime, SuperCook and Samsung Food each have under 200 German ratings. Listonic is mostly Polish (27k ratings in Poland).
+- **Germany's Food & Drink chart is led by supermarkets.** On 6 October the top two were EDEKA and REWE, followed by delivery apps (Lieferando, Wolt) and Too Good To Go. Picnic (a supermarket that delivers, with recipes) was #8, Thermomix's Cookidoo #14, HelloFresh #26 and Chefkoch #33.
+- **mise is the one to watch.** It only launched in June 2026 and was already #10 in Germany's Food & Drink chart and #11 in the UK's.
+
+For us: the people we interview in Berlin most likely use Bring! for shopping lists and YAZIO (not MyFitnessPal) for tracking, so it's worth asking about those by name. German supermarkets and products (REWE, EDEKA, Lidl, Aldi) matter more here than US store integrations, and it's worth checking whether a shopping list we build could be sent to Bring!, since that's where people already shop from.
+
 ## Questions this suggests for the interviews
 
 These ask about what people have done, not what they would do, and don't pitch anything (the same rules as the interview guide):
