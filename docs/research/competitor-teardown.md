@@ -279,6 +279,61 @@ For us: the time to beat is setup and entry. A first plan and shopping list with
 
 For us: nobody handles "cook once, eat four times" well. That means adding up amounts, scaling a recipe up, and keeping track of the portions left, which is exactly what the batch cooking persona needs. Knowing what's at home should come for free from the shopping list and the recipes people cook, not from typing in a pantry.
 
+## How apps hold up over updates
+
+To see which apps get better or worse as they ship updates, I pulled about 33,000 Google Play reviews of every star rating from July 2025 to early October 2026 for 13 of the apps, and counted the 1 and 2 star reviews each app got per month. Counting complaints works better than averaging stars, because the average also moves when fewer happy people write reviews. Cal AI's 5 star reviews fell from over 100 a month in spring to under 10 a month from July, while its complaints stayed about the same.
+
+### Updates that backfired
+
+The months where an app got far more complaints than usual, and what reviewers said had changed:
+
+| App | Month | 1 and 2 star reviews that month | Usual month | What changed |
+|---|---|---:|---:|---|
+| MyFitnessPal | April 2026 | 1,327 | about 320 | The new "Today" screen replaced the diary |
+| Samsung Food | April 2026 | 22 | about 8 | Sign-in moved to Samsung accounts, and some people lost their saved recipes |
+| Bring! (German store) | October 2025 | 34 | about 12 | One bad day (20 October) when logins and shared lists stopped working |
+| Lose It! | November 2025 | 106 | about 60 | The bar at the top cut down to three nutrients |
+| Listonic | March 2026 | 29 | about 17 | An AI feature added with no way to switch it off |
+| YAZIO | May 2026 | 165 | about 100 | An update on 4 May made the app crash |
+| Cronometer | June to September 2026 | 53 to 69 a month | about 42 | No single update. Ads and bugs slowly got worse |
+
+The pattern: the biggest jumps come from changing a screen people use every day, and the worst single days come from people losing access to their own data. Mealime is the extreme case, since the whole app closes on 21 October 2026.
+
+### Apps that stayed steady
+
+AnyList and Paprika never went above 6% of 1 and 2 star reviews in any month, and SuperCook stayed between 3% and 14%. All three are simple apps that do one job, and none of them shows its own ads (SuperCook's complaints about ads are about the recipe websites it opens). SuperCook's iPhone app hasn't been updated since June 2022 and is still rated 4.8.
+
+### Store ratings hide recent decline
+
+The rating in the store averages years of ratings. Reviews written in the last three months tell a different story for some apps:
+
+| App | Google Play rating | Average of reviews written July to September 2026 |
+|---|---:|---:|
+| MyFitnessPal | 4.4 | 2.6 |
+| YAZIO | 4.4 | 2.9 |
+| Lose It! | 4.6 | 3.3 |
+| Listonic | 4.6 | 3.5 |
+| Bring! (German store) | 4.3 | 3.6 |
+| Samsung Food | 4.5 | 3.7 |
+| Cronometer | 4.5 | 3.8 |
+| SuperCook | 4.6 | 4.5 |
+| AnyList | 4.8 | 4.8 |
+| Paprika | 4.9 | 4.9 |
+
+People who write a review are always a bit less happy than people who only tap a star, so the gap matters more than the number itself. Cal AI's gap is the biggest of all (4.6 against 2.1), but mostly because its happy reviewers stopped writing, as explained above.
+
+### Replying isn't fixing
+
+How often each developer replied to 1 and 2 star reviews posted since January 2026:
+
+| Replies to almost every bad review, usually the same day | Replies to most, within a few days | Rarely or never replies |
+|---|---|---|
+| Cronometer (100%), YAZIO (99%), MyFitnessPal (95%) | Samsung Food (97%), Bring! (96%), Listonic (95%), KitchenPal (100%), AnyList (97%, about 11 days) | Lose It! (20%), Mealime (2%), Cal AI, mise, Paprika and SuperCook (0%) |
+
+Many replies are templates: about a quarter of MyFitnessPal's and YAZIO's, and half of Samsung Food's, start with the same words. Replying also doesn't track how happy people are. Paprika, the best-rated app here, didn't reply to a single 1 or 2 star review this year, while MyFitnessPal replies to almost all of them and has the angriest reviewers.
+
+For us: stability is a feature. Before changing a screen people use every day, try it with a few users, and if it's a big change, offer it as an option first (YAZIO reviewers didn't mind AI entry, they minded losing Quick Add). Never put people's saved data at risk, and let them export it. After each MVP, watch how many complaints we get, not just the average rating.
+
 ## Questions this suggests for the interviews
 
 These ask about what people have done, not what they would do, and don't pitch anything (the same rules as the interview guide):
