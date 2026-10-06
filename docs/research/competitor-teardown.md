@@ -249,6 +249,36 @@ What reviewers said:
 - Another says each entry in the free version meant two video ads and then four screens pushing PRO. (Google Play, 1★, 17 Jun 2026)
 - Another says the July update took away the quick way to log a meal with your own name and nutrients. (Google Play, 1★, 30 Jul 2026)
 
+## Pain points by persona
+
+How the competitors try to help our two personas, and where it goes wrong according to their reviews.
+
+### Time-constrained users
+
+Most of these apps promise to save time. The reviews say the time actually goes on setup and entering things, not on cooking.
+
+| What saves time | Who has it | What goes wrong |
+|---|---|---|
+| Fast logging: barcode scanner, photo and voice AI, quick add, repeating yesterday's meal | MyFitnessPal, Lose It!, Cronometer, YAZIO, Cal AI | The scanner is often paid (MyFitnessPal, Lose It!). AI estimates are often wrong (Cal AI, YAZIO). Updates removed shortcuts (Lose It!'s quick add in January 2026, YAZIO's Quick Add in July 2026) or added taps (MyFitnessPal's redesign) |
+| A weekly plan that turns into a shopping list | Mealime, mise, Samsung Food, AnyList (paid), MyFitnessPal Premium+ | Plans don't fit real life: no cooking for one, diets ignored, the same recipes again. Lists miss ingredients, mise's budget estimates are far off, and the best parts are paid |
+| Saving recipes from websites straight into a plan or list | AnyList, Paprika, Samsung Food, Bring! | Imports fail or come out garbled, the steps go missing, and AnyList and Mealime limit free imports |
+| Adding to the list by voice | Bring!, AnyList | Google Assistant support ended in 2023 and an Alexa change broke adding by voice in 2024 |
+| Getting started quickly | Almost none | Long quizzes (YAZIO, Lose It!, mise), an account before you can try anything (AnyList), or a paywall before you can try anything (Cal AI, mise) |
+
+For us: the time to beat is setup and entry. A first plan and shopping list within a minute or two, without an account wall or a long quiz, would already be faster than most of these apps. Once people rely on a shortcut, keep it.
+
+### Batch cooks and inventory managers
+
+| What they need | Who has it | What goes wrong |
+|---|---|---|
+| A shared shopping list | Bring!, Listonic, AnyList, KitchenPal | Edits get lost or overwritten between partners, sponsored items turn up in shared lists (Listonic, Bring!), and in Paprika each person has to buy the app |
+| Cooking several portions and planning a week at a time | Paprika (menus, monthly calendar), AnyList (calendar), Mealime, mise | Servings come in fixed sizes, plans come out shorter than asked for (mise), there's no planning for leftovers or cooking ahead, amounts from several recipes aren't added up (Bring!), and a few YAZIO reviewers say logging food ahead now needs PRO |
+| Knowing what's at home, with expiry dates | KitchenPal, NoWaste, Paprika, Samsung Food (paid) | Getting everything in takes hours and barcodes often fail, nothing comes off when you cook, and there are caps and paywalls on the basics |
+| Recipes from what you already have | SuperCook, KitchenPal, mise, Samsung Food (paid) | Suggestions still need ingredients you don't have, people won't enter a whole pantry, and food bought for one meal isn't used up in later ones (mise) |
+| Keeping track of a batch you've cooked | Not really: pantry apps track ingredients, not cooked portions | KitchenPal reviewers ask to track frozen ready meals and how much is left |
+
+For us: nobody handles "cook once, eat four times" well. That means adding up amounts, scaling a recipe up, and keeping track of the portions left, which is exactly what the batch cooking persona needs. Knowing what's at home should come for free from the shopping list and the recipes people cook, not from typing in a pantry.
+
 ## Questions this suggests for the interviews
 
 These ask about what people have done, not what they would do, and don't pitch anything (the same rules as the interview guide):
