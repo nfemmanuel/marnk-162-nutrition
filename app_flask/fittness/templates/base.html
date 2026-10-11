@@ -1,0 +1,15 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Nutrition App</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<header>
+  <h1>Nutrition App</h1>
+</header>
+
+<section class="content">
+  {% block content %}{% endblock %}
+</section>
+
+<footer>
+  <p>&copy; Nutrition App</p>
+</footer>
