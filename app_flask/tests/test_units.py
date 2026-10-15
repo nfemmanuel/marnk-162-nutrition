@@ -1,6 +1,6 @@
 import unittest
 
-from fittness import create_app
+from app_flask.nutrition import create_app
 
 
 class FactoryTest(unittest.TestCase):
@@ -13,6 +13,7 @@ class FactoryTest(unittest.TestCase):
         client = app.test_client()
         response = client.get("/hello")
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_data(as_text=True), "Hello, Nutrition App!")
 
 
 if __name__ == "__main__":
