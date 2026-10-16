@@ -1,3 +1,6 @@
 .venv/
 __pycache__/
 *.pyc
+
+# The SQLite database file lives here
+instance/
