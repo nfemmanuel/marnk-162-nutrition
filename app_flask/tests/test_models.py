@@ -15,39 +15,33 @@ from app_flask.nutrition.models import User
 
 class UserModelTest(unittest.TestCase):
     def setUp(self):
-        """Make a fresh app with an empty in-memory database before every test."""
         self.app = create_app({"TESTING": True, "SQLALCHEMY_DATABASE_URI": "sqlite://"})
         self.context = self.app.app_context()
         self.context.push()
         db.create_all()
 
     def tearDown(self):
-        """Throw the database away after every test."""
         db.session.remove()
         db.drop_all()
         self.context.pop()
 
     def test_user_is_saved_and_read_back(self):
-        # Save a user
         user = User(email="ana@example.com")
         user.set_password("secret123")
         db.session.add(user)
         db.session.commit()
 
-        # Read it back from the database
         saved = db.session.execute(
             db.select(User).filter_by(email="ana@example.com")
         ).scalar_one()
         self.assertIsNotNone(saved.id)
         self.assertIsNotNone(saved.created_at)
 
-        # Only a hash is stored, and it still checks the real password
         self.assertNotEqual(saved.password_hash, "secret123")
         self.assertTrue(saved.check_password("secret123"))
         self.assertFalse(saved.check_password("wrong"))
 
     def test_email_must_be_unique(self):
-        # Two users with the same email can't both be saved
         db.session.add(User(email="ana@example.com", password_hash="x"))
         db.session.add(User(email="ana@example.com", password_hash="y"))
         with self.assertRaises(IntegrityError):
@@ -59,6 +53,7 @@ class UserModelTest(unittest.TestCase):
 
         result = self.app.test_cli_runner().invoke(args=["init-db"])
 
+        self.assertEqual(result.exit_code, 0, result.output)
         self.assertIn("Created the database tables", result.output)
         self.assertTrue(db.inspect(db.engine).has_table("users"))
 
