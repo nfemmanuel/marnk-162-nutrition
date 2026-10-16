@@ -1,6 +1,7 @@
 from flask import Flask
 
 from .db import db
+from . import models  # noqa: F401  (loads the tables so the database knows about them)
 
 
 def create_app(test_config=None):
