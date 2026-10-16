@@ -1,6 +1,6 @@
 from flask import Flask
 
-from .db import db
+from .db import db, init_db_command
 from . import models  # noqa: F401  (loads the tables so the database knows about them)
 
 
@@ -16,8 +16,9 @@ def create_app(test_config=None):
         # Tests can pass their own config, e.g. {"TESTING": True}
         app.config.from_mapping(test_config)
 
-    # Connect the database to this app
+    # Connect the database to this app, and add the `flask init-db` command
     db.init_app(app)
+    app.cli.add_command(init_db_command)
 
     # Temporary route so we can check the app starts (home page story replaces this)
     @app.route("/hello")
