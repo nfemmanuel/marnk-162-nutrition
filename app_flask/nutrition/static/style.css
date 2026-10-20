@@ -10,3 +10,40 @@ header {
 footer { 
     border-top: 1px solid #ccc; 
     margin-top: 2rem; color: #666; }
+
+.home {
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.home h2 {
+    font-size: clamp(1.75rem, 8vw, 3rem);
+    margin-bottom: 0.5rem;
+}
+
+.home-description {
+    margin: 0 auto 1.5rem;
+    max-width: 32rem;
+}
+
+.home-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.home-link {
+    background: #245c45;
+    border-radius: 0.4rem;
+    color: white;
+    display: inline-block;
+    min-width: 7rem;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+}
+
+.home-link-secondary {
+    background: #e8f0eb;
+    color: #245c45;
+}
