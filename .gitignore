@@ -1,1 +1,10 @@
+# Generated API responses
 spikes/responses/
+
+# Python environment
+.venv/
+__pycache__/
+*.pyc
+
+# SQLite database
+instance/
