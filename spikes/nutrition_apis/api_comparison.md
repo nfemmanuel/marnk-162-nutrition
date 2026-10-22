@@ -1,19 +1,19 @@
 # Nutrition and recipe data sources: comparison (spike)
 
 - Ticket: NUT-22 (epic NUT-21). Unblocks ADR-001.
-- Script: `spikes/compare_food_apis.py`
+- Script: `compare_food_apis.py`
 - Run: 2026-10-08. All APIs once, then both Open Food Facts endpoints a second time after the legacy endpoint returned 503. One machine, one network. Timings are indicative only.
 - Keys used: USDA `DEMO_KEY`, Open Food Facts none (custom User-Agent), TheMealDB test key `1`.
 - The saved raw JSON of every call was inspected for nutrient fields and result lists. It is not committed to the repo.
 
-TLDR:
+## TL;DR
 Bottom line: none of the three covers both recipes and macros. In our tests USDA was the strongest source for nutrition, Open Food Facts adds packaged products, and TheMealDB only supplies recipe text. This rests on four searches and one run, and the decision belongs in ADR-001.
 
-| Use it for            | Don't use it for                                                                                                                                            | Watch out for                                                                    |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| USDA FoodData Central | Macros for ingredients and generic foods (chicken breast, lasagna). Best coverage and best typo behaviour. Per 100 g, plus gram weights for common portions | Recipes, or anything needing a spelling-tolerant UI on its own                   | Key must stay on our backend. Limit is per IP (1,000/hour with a registered key, DEMO_KEY is far smaller). SR Legacy lists energy twice (kcal and kJ) |
-| Open Food Facts       | Branded and packaged products, barcodes, per 100 g macros. Use Search-a-licious                                                                             | The legacy search endpoint: 503 on half our calls, French-first results, slowest | Some hits lack macros (7 of 10 for nutella). ODbL licence has conditions. Search-a-licious rate limits aren't documented                              |
-| TheMealDB             | Recipe text, ingredient lists and photos, if we want outside recipes                                                                                        | Nutrition, or broad coverage (2 lasagna recipes, 0 for chicken breast)           | No nutrition fields. Measures are free text ("1 cups", "sprinking"). Free key is for development and educational use                                  |
+| API | Use it for | Don't use it for | Watch out for |
+| --- | --- | --- | --- |
+| USDA FoodData Central | Macros for ingredients and generic foods (chicken breast, lasagna). Best coverage and best typo behaviour. Per 100 g, plus gram weights for common portions. | Recipes, or anything needing a spelling-tolerant UI on its own. | Key must stay on our backend. Limit is per IP (1,000/hour with a registered key; DEMO_KEY is far smaller). SR Legacy lists energy twice (kcal and kJ). |
+| Open Food Facts | Branded and packaged products, barcodes, per 100 g macros. Use Search-a-licious. | The legacy search endpoint: 503 on half our calls, French-first results, slowest. | Some hits lack complete macros (3 of 10 for nutella). ODbL licence has conditions. Search-a-licious rate limits aren't documented. |
+| TheMealDB | Recipe text, ingredient lists and photos, if we want outside recipes. | Nutrition, or broad coverage (2 lasagna recipes, 0 for chicken breast). | No nutrition fields. Measures are free text ("1 cups", "sprinking"). Free key is for development and educational use. |
 
 This document records facts and observations. The decision belongs in ADR-001.
 

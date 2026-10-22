@@ -3,14 +3,14 @@ and TheMealDB, and save every raw response for inspection.
 
 Throwaway code, not part of the app.
 
-    USDA_API_KEY=... OFF_CONTACT_EMAIL=you@example.com python spikes/compare_food_apis.py
+    USDA_API_KEY=... OFF_CONTACT_EMAIL=you@example.com python compare_food_apis.py
 
 USDA_API_KEY is optional (falls back to the rate-limited DEMO_KEY).
 OFF_CONTACT_EMAIL is required: Open Food Facts asks for a User-Agent with a contact.
 
 Pass API names to run only those (default: all), e.g. to retry Open Food Facts:
 
-    python spikes/compare_food_apis.py off off_sal
+    python compare_food_apis.py off off_sal
 """
 
 import json
