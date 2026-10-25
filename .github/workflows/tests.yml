@@ -7,7 +7,10 @@ on:
 
 jobs:
     test:
-        runs-on: ubuntu-latest
+        # Runs on NF's PC (self-hosted runner "nf-pc") while GitHub-hosted runners are unavailable.
+        # Only PRs from branches in this repo run here, never PRs from forks.
+        if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
+        runs-on: [self-hosted, nf-pc]
         steps:
             - uses: actions/checkout@v4
 
