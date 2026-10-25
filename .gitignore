@@ -1,6 +1,10 @@
+# Generated API responses
+spikes/responses/
+
+# Python environment
 .venv/
 __pycache__/
 *.pyc
 
-# The SQLite database file lives here
+# SQLite database
 instance/
