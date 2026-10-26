@@ -44,6 +44,8 @@ def register():
 
         if not normalized_email or not submitted_password:
             flash("Email and password are required.")
+        elif len(submitted_password) < 8:
+            flash("Password must be at least 8 characters.")
         elif not is_valid_email(normalized_email):
             flash("Enter a valid email address.")
         elif get_user_by_email(normalized_email) is not None:

@@ -35,17 +35,31 @@ class AuthTest(unittest.TestCase):
         registration_response = self.client.post(
             "/register",
             data={"email": "  ANA@EXAMPLE.COM ", "password": "secret123"},
-            follow_redirects=True,
         )
 
         saved_user = db.session.execute(
             db.select(User).filter_by(email="ana@example.com")
         ).scalar_one()
-        self.assertEqual(registration_response.status_code, 200)
+        self.assertEqual(registration_response.status_code, 302)
+        self.assertEqual(registration_response.headers["Location"], "/login")
+        login_page = self.client.get(registration_response.headers["Location"])
         self.assertIn(
-            b"Account created. Please log in.", registration_response.data
+            b"Account created. Please log in.", login_page.data
         )
         self.assertNotEqual(saved_user.password_hash, "secret123")
+
+    def test_register_rejects_short_password(self):
+        registration_response = self.client.post(
+            "/register",
+            data={"email": "ana@example.com", "password": "short"},
+        )
+
+        self.assertEqual(registration_response.status_code, 200)
+        self.assertIn(
+            b"Password must be at least 8 characters.",
+            registration_response.data,
+        )
+        self.assertIsNone(db.session.execute(db.select(User)).scalar_one_or_none())
 
     def test_register_rejects_invalid_email(self):
         registration_response = self.client.post(
@@ -84,12 +98,13 @@ class AuthTest(unittest.TestCase):
         login_response = self.client.post(
             "/login",
             data={"email": "ANA@EXAMPLE.COM", "password": "secret123"},
-            follow_redirects=True,
         )
 
-        self.assertEqual(login_response.status_code, 200)
+        self.assertEqual(login_response.status_code, 302)
+        self.assertEqual(login_response.headers["Location"], "/account")
+        account_page = self.client.get(login_response.headers["Location"])
         self.assertIn(
-            b"You are logged in as ana@example.com.", login_response.data
+            b"You are logged in as ana@example.com.", account_page.data
         )
 
     def test_login_with_incorrect_password(self):
@@ -103,7 +118,11 @@ class AuthTest(unittest.TestCase):
 
         self.assertEqual(login_response.status_code, 200)
         self.assertIn(b"Incorrect email or password.", login_response.data)
-        self.assertEqual(self.client.get("/account").status_code, 302)
+        account_response = self.client.get("/account")
+        self.assertEqual(account_response.status_code, 302)
+        self.assertEqual(
+            account_response.headers["Location"], "/login?next=%2Faccount"
+        )
 
     def test_logout(self):
         create_user("ana@example.com", "secret123")
@@ -112,11 +131,18 @@ class AuthTest(unittest.TestCase):
             data={"email": "ana@example.com", "password": "secret123"},
         )
 
-        logout_response = self.client.post("/logout", follow_redirects=True)
+        logout_response = self.client.post("/logout")
 
-        self.assertEqual(logout_response.status_code, 200)
-        self.assertIn(b"You have been logged out.", logout_response.data)
-        self.assertEqual(self.client.get("/account").status_code, 302)
+        self.assertEqual(logout_response.status_code, 302)
+        self.assertEqual(logout_response.headers["Location"], "/login")
+        login_page = self.client.get(logout_response.headers["Location"])
+        self.assertIn(b"You have been logged out.", login_page.data)
+
+        account_response = self.client.get("/account")
+        self.assertEqual(account_response.status_code, 302)
+        self.assertEqual(
+            account_response.headers["Location"], "/login?next=%2Faccount"
+        )
 
 
 if __name__ == "__main__":
