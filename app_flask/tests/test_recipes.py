@@ -38,8 +38,8 @@ class APIValidationTest(unittest.TestCase):
     def test_duplicates_and_invalid_records_excluded(self):
         def fake_fetch(term):
             if term == "chicken":
-                return [sample_meal(i) for i in range(1, 31)] + [
-                    sample_meal(1), {"idMeal": "bad"}
+                return [{"idMeal": "bad"}, sample_meal(1), sample_meal(1)] + [
+                    sample_meal(i) for i in range(2, 31)
                 ]
             return [sample_meal(i) for i in range(31, 41)]
 
@@ -47,6 +47,24 @@ class APIValidationTest(unittest.TestCase):
         self.assertEqual(len(records), 40)
         self.assertEqual(rejected, 1)
         self.assertEqual(len({r["source_id"] for r in records}), 40)
+
+    def test_round_robin_includes_later_search_terms(self):
+        from app_flask.nutrition.recipe_api import SEARCH_TERMS
+
+        def fake_fetch(term):
+            number = SEARCH_TERMS.index(term)
+            return [
+                sample_meal(1000 + number * 3 + i, f"{term} {i}")
+                for i in range(3)
+            ]
+
+        records, rejected = download_recipes(40, fake_fetch)
+        self.assertEqual(rejected, 0)
+        self.assertEqual(
+            [recipe["name"] for recipe in records[:len(SEARCH_TERMS)]],
+            [f"{term} 0" for term in SEARCH_TERMS],
+        )
+        self.assertEqual(records[len(SEARCH_TERMS)]["name"], "chicken 1")
 
     def test_insufficient_records_is_error(self):
         with self.assertRaises(ValueError):
