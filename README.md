@@ -30,3 +30,16 @@ py -m unittest discover -s app_flask/tests -t .
 ```
 
 Recipe data is sourced from TheMealDB. The importer and database models are implemented in `app_flask/nutrition/`.
+
+
+## Ingredient Macros (NUT-28)
+
+Calories, protein, carbs and fat per 100 g, from USDA, for the starter recipes' ingredients. Load them after seeding the recipes (no internet needed):
+
+```powershell
+py -m flask --app app_flask.nutrition seed-ingredients
+```
+
+- `seed-ingredients` replaces the foods and ingredients tables with the files in `app_flask/nutrition/data/` and lists any recipe ingredient that has no entry yet.
+- `recipe_totals()` in `app_flask/nutrition/macros.py` adds up a recipe.
+- `app_flask/nutrition/data/README.md` says where the numbers come from, which ingredients are skipped and how amounts are read.
