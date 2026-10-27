@@ -1,0 +1,25 @@
+name: Tests
+
+on:
+    pull_request:
+    push:
+        branches: [main]
+
+jobs:
+    test:
+        # Runs on NF's PC (self-hosted runner "nf-pc") while GitHub-hosted runners are unavailable.
+        # Only PRs from branches in this repo run here, never PRs from forks.
+        if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
+        runs-on: [self-hosted, nf-pc]
+        steps:
+            - uses: actions/checkout@v4
+
+            # Uses the Python already installed on the PC, in a fresh virtual environment each run
+            - name: Create a virtual environment
+              run: python -m venv .ci-venv
+
+            - name: Install dependencies
+              run: .ci-venv/Scripts/python -m pip install -r app_flask/requirements.txt
+
+            - name: Run tests
+              run: .ci-venv/Scripts/python -m unittest discover -s app_flask/tests -t . -v
