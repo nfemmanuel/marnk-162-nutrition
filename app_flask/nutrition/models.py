@@ -26,3 +26,26 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+
+class Recipe(db.Model):
+    __tablename__ = "recipes"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), nullable=False)
+    source = db.Column(db.String(40), nullable=False)
+    source_id = db.Column(db.String(40), nullable=False)
+    source_url = db.Column(db.String(255), nullable=False)
+    __table_args__ = (db.UniqueConstraint("source", "source_id"),)
+    ingredients = db.relationship(
+        "RecipeIngredient", backref="recipe", cascade="all, delete-orphan"
+    )
+
+
+class RecipeIngredient(db.Model):
+    __tablename__ = "recipe_ingredients"
+
+    id = db.Column(db.Integer, primary_key=True)
+    recipe_id = db.Column(db.Integer, db.ForeignKey("recipes.id"), nullable=False)
+    name = db.Column(db.String(120), nullable=False)
+    amount = db.Column(db.String(100), nullable=False)
