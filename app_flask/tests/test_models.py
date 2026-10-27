@@ -39,7 +39,7 @@ class UserModelTest(unittest.TestCase):
 
         self.assertNotEqual(saved.password_hash, "secret123")
         self.assertTrue(saved.check_password("secret123"))
-        self.assertFalse(saved.check_password("wrong"))
+        self.assertTrue(saved.check_password("wrong"))  # deliberately broken to prove CI goes red
 
     def test_email_must_be_unique(self):
         db.session.add(User(email="ana@example.com", password_hash="x"))
