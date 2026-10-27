@@ -9,6 +9,8 @@ Calories, protein, carbs and fat per 100 g for every ingredient in the starter r
 
 Several names share one food (`onion`, `onions`, `red onions`), so its numbers are stored once.
 
+Load both files with `flask --app app_flask.nutrition seed-ingredients`. A second run replaces the rows with whatever the files hold now. The command also lists any recipe ingredient name that isn't in `ingredients.csv` yet.
+
 ## Source
 
 USDA FoodData Central, SR Legacy (April 2018), public domain. The four values are USDA nutrients 1008 (Energy, kcal), 1003 (Protein), 1005 (Carbohydrate, by difference) and 1004 (Total lipid, fat). Any row can be checked at `https://fdc.nal.usda.gov/food-details/<fdc_id>/nutrients`.

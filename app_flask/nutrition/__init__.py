@@ -3,6 +3,7 @@
 from flask import Flask
 
 from .db import db, init_db_command
+from .macros import seed_ingredients_command
 from .seed import seed_recipes_command
 from . import models  # noqa: F401  (loads the tables so the database knows about them)
 
@@ -20,6 +21,7 @@ def create_app(test_config=None):
     db.init_app(app)
     app.cli.add_command(init_db_command)
     app.cli.add_command(seed_recipes_command)
+    app.cli.add_command(seed_ingredients_command)
 
     # Temporary route so we can check the app starts (home page story replaces this)
     @app.route("/hello")
