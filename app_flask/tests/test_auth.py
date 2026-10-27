@@ -29,6 +29,7 @@ class AuthTest(unittest.TestCase):
     def tearDown(self):
         db.session.remove()
         db.drop_all()
+        db.engine.dispose()
         self.app_context.pop()
 
     def test_register(self):
