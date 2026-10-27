@@ -1,11 +1,13 @@
 """Calories and macros for recipe ingredients, from USDA values per 100 g.
 
 `flask --app nutrition seed-ingredients` loads data/foods.csv and
-data/ingredients.csv into the database. data/README.md says where the numbers
-come from and which ingredients are skipped.
+data/ingredients.csv into the database, and recipe_totals() adds up a recipe
+from them. data/README.md says where the numbers come from and which
+ingredients are skipped.
 """
 
 import csv
+import string
 from pathlib import Path
 
 import click
@@ -14,6 +16,17 @@ from .db import db
 from .models import Food, Ingredient, RecipeIngredient
 
 DATA_FOLDER = Path(__file__).resolve().parent / "data"
+
+# Grams in one unit. Spoons and cups are weighed as water (1 ml = 1 g), which is
+# close enough for a rough total.
+GRAMS_PER_UNIT = {
+    "g": 1, "gram": 1, "grams": 1, "kg": 1000,
+    "ml": 1, "l": 1000,
+    "oz": 28.35, "ounce": 28.35, "ounces": 28.35, "lb": 453.6, "lbs": 453.6,
+    "tsp": 5, "teaspoon": 5, "teaspoons": 5,
+    "tbs": 15, "tbls": 15, "tblsp": 15, "tbsp": 15, "tablespoon": 15, "tablespoons": 15,
+    "cup": 240, "cups": 240,
+}
 
 
 def read_csv(filename):
@@ -72,3 +85,58 @@ def seed_ingredients_command():
     missing = names_without_macros()
     if missing:
         click.echo("Recipe ingredients not in ingredients.csv yet: " + ", ".join(missing))
+
+
+def read_number(text):
+    """Read "2", "1.5" or "1/2" as a number. Raises ValueError for anything else."""
+    if "/" in text:
+        top, bottom = text.split("/")
+        return float(top) / float(bottom)
+    return float(text)
+
+
+def to_grams(amount):
+    """Turn an amount like "200g", "1 1/2 cups" or "2 tbs" into grams.
+
+    Returns None for amounts we can't weigh, like "2 sliced", "1 large" or "To taste".
+    """
+    text = amount.lower().replace("½", " 1/2").replace("¼", " 1/4").replace("¾", " 3/4")
+    number = 0
+    for word in text.split():
+        digits = word.rstrip(string.ascii_lowercase)  # "100g" -> "100"
+        unit = word[len(digits):]  # "100g" -> "g"
+        if digits:
+            try:
+                number += read_number(digits)
+            except (ValueError, ZeroDivisionError):  # a range like "1-2", or "1/0"
+                return None
+        if unit:
+            if number == 0 or unit not in GRAMS_PER_UNIT:
+                return None
+            return number * GRAMS_PER_UNIT[unit]
+    return None
+
+
+def recipe_totals(recipe):
+    """Add up the calories, protein, carbs and fat of a recipe's ingredients.
+
+    Spices are skipped. Returns the totals and a list of the ingredients left
+    out: names with no macros yet, and amounts we can't weigh, like "2 sliced".
+    """
+    totals = {"calories": 0, "protein": 0, "carbs": 0, "fat": 0}
+    left_out = []
+    for item in recipe.ingredients:
+        ingredient = db.session.get(Ingredient, item.name.lower())
+        if ingredient is not None and ingredient.fdc_id is None:
+            continue  # a spice
+        grams = to_grams(item.amount)
+        if ingredient is None or grams is None:
+            left_out.append(item.name)
+            continue
+        food = db.session.get(Food, ingredient.fdc_id)
+        share = grams / 100  # USDA values are per 100 g
+        totals["calories"] += food.calories * share
+        totals["protein"] += food.protein * share
+        totals["carbs"] += food.carbs * share
+        totals["fat"] += food.fat * share
+    return totals, left_out

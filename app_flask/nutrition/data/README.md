@@ -28,3 +28,13 @@ USDA FoodData Central, SR Legacy (April 2018), public domain. The four values ar
   - Lemon and lime mean their juice ("1/3 cup").
   - Kidney beans are canned with their liquid: the recipes pour in the whole can.
   - "Tomato puree" is US-style purée: three recipes use 8 oz of it.
+
+## Recipe totals
+
+`recipe_totals()` in `macros.py` adds up a whole recipe from these values.
+
+- **Units it reads:** weights (g, kg, oz, lb), volumes (ml, l) and spoons and cups. Volumes are weighed as water (1 ml = 1 g), which is close enough for a rough total.
+- **Spices** are skipped.
+- **Amounts it can't weigh** come back in a list of ingredients left out, so a page can say the total is partial. These are pieces ("2 sliced", "8" chicken thighs) and words ("To taste").
+
+Across the 50 starter recipes, 269 ingredient rows are counted, 122 spices are skipped and 164 rows are left out, mostly pieces.
