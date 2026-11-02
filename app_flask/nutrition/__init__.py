@@ -10,6 +10,7 @@ from flask import Flask
 
 from .auth import auth_blueprint, login_manager
 from .db import db, init_db_command
+from .seed import seed_recipes_command
 from . import models  # noqa: F401  (loads the tables so the database knows about them)
 
 
@@ -29,6 +30,7 @@ def create_app(test_config=None):
 
     db.init_app(app)
     app.cli.add_command(init_db_command)
+    app.cli.add_command(seed_recipes_command)
 
     login_manager.init_app(app)
     # ``login_required`` redirects unauthenticated requests to this endpoint.
