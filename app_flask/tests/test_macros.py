@@ -48,11 +48,27 @@ class SeedIngredientsTest(unittest.TestCase):
         self.assertEqual(db.session.query(Food).count(), foods)
 
     def test_every_food_an_ingredient_points_to_exists(self):
-        """SQLite doesn't check foreign keys by default, so the test does."""
+        """Every fdc_id in ingredients.csv is a row in foods.csv."""
         for ingredient in db.session.query(Ingredient):
             if ingredient.fdc_id is not None:
                 food = db.session.get(Food, ingredient.fdc_id)
                 self.assertIsNotNone(food, ingredient.name)
+
+    def test_a_missing_food_changes_nothing(self):
+        """An fdc_id missing from the food rows is rejected, and the tables keep their rows."""
+        foods = db.session.query(Food).count()
+        ingredients = db.session.query(Ingredient).count()
+        food = {
+            "fdc_id": "1", "description": "Test food", "calories": "100",
+            "protein": "0", "carbs": "0", "fat": "0",
+        }
+        typo = {"name": "rice", "fdc_id": "2"}
+
+        with self.assertRaises(ValueError):
+            load_macros([food], [typo])
+
+        self.assertEqual(db.session.query(Food).count(), foods)
+        self.assertEqual(db.session.query(Ingredient).count(), ingredients)
 
     def test_spices_have_no_food_and_staples_do(self):
         """Salt is skipped, and rice has USDA's values for raw white rice."""

@@ -9,7 +9,13 @@ Calories, protein, carbs and fat per 100 g for every ingredient in the starter r
 
 Several names share one food (`onion`, `onions`, `red onions`), so its numbers are stored once.
 
-Load both files with `flask --app app_flask.nutrition seed-ingredients`. A second run replaces the rows with whatever the files hold now. The command also lists any recipe ingredient name that isn't in `ingredients.csv` yet.
+Load both files from the repo root, after `seed-recipes` (no internet needed):
+
+```
+flask --app app_flask.nutrition seed-ingredients
+```
+
+A second run replaces the rows with whatever the files hold now. If a row has a bad number, or an `fdc_id` in `ingredients.csv` isn't in `foods.csv`, the command stops and changes nothing. It also lists any recipe ingredient name that isn't in `ingredients.csv` yet.
 
 ## Source
 

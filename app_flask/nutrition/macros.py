@@ -39,11 +39,13 @@ def load_macros(food_rows, ingredient_rows):
     """Replace the foods and ingredients tables with these rows.
 
     It all happens in one transaction, so a bad row leaves the tables as they were.
+    Raises ValueError for a bad number or an fdc_id that isn't in the food rows.
     """
     try:
         # Ingredients first: they point to foods
         db.session.execute(db.delete(Ingredient))
         db.session.execute(db.delete(Food))
+        food_ids = set()
         for row in food_rows:
             food = Food(
                 fdc_id=int(row["fdc_id"]),
@@ -54,9 +56,15 @@ def load_macros(food_rows, ingredient_rows):
                 fat=float(row["fat"]),
             )
             db.session.add(food)
+            food_ids.add(food.fdc_id)
         for row in ingredient_rows:
             # Spices have an empty fdc_id: they have no food
             fdc_id = int(row["fdc_id"]) if row["fdc_id"] else None
+            # SQLite doesn't check foreign keys by default, so check them here
+            if fdc_id is not None and fdc_id not in food_ids:
+                raise ValueError(
+                    f"{row['name']} points to fdc_id {fdc_id}, which isn't in foods.csv"
+                )
             db.session.add(Ingredient(name=row["name"].lower(), fdc_id=fdc_id))
         db.session.commit()
     except Exception:
@@ -79,7 +87,10 @@ def seed_ingredients_command():
     db.create_all()
     foods = read_csv("foods.csv")
     ingredients = read_csv("ingredients.csv")
-    load_macros(foods, ingredients)
+    try:
+        load_macros(foods, ingredients)
+    except ValueError as error:
+        raise click.ClickException(f"Nothing changed: {error}") from error
     click.echo(f"Loaded {len(foods)} USDA foods and {len(ingredients)} ingredient names.")
 
     missing = names_without_macros()
