@@ -75,9 +75,13 @@ def download_recipes(target=40, fetch=None):
     seen_ids = set()
     seen_names = set()
     rejected = 0
-    for term in SEARCH_TERMS:
-        for meal in fetch(term):
-            recipe = validate_meal(meal)
+    # Take one result per search term before taking a second from any term.
+    groups = [fetch(term) for term in SEARCH_TERMS]
+    for index in range(max(len(group) for group in groups)):
+        for group in groups:
+            if index >= len(group):
+                continue
+            recipe = validate_meal(group[index])
             if recipe is None:
                 rejected += 1
                 continue
