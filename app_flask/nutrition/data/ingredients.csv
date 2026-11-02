@@ -1,7 +1,15 @@
 name,fdc_id,note
+all-purpose seasoning,,spice blend
 allspice,,spice or herb
+apple cider vinegar,,USDA lists vinegar under spices
+apples,171688,
+apricot,173941,dried: tagines use dried apricots
+asparagus,168389,
+avocado,171705,
 baby plum tomatoes,170457,
+bacon,168277,
 bacon lardon,168277,
+baking powder,172803,
 banana leaves,,not eaten
 basil,,spice or herb
 basmati rice,168877,
@@ -12,21 +20,36 @@ beef,169483,generic beef: composite of retail cuts
 beef fillet,171812,fillet = tenderloin
 beef stock,172883,
 beef stock concentrate,171561,
+beetroot,169145,beetroot = beets
+bicarbonate of soda,175040,bicarbonate of soda = baking soda
 birds-eye chillies,170106,fresh red chilli
+black beans,175188,canned
 black olives,169094,
 black pepper,,spice or herb
 black pudding,171618,black pudding = blood sausage
+blueberries,171711,
+bread,174924,white bread
+breadcrumbs,174928,dry breadcrumbs
+broccoli,170379,
+brown lentils,172420,dry lentils
 brown rice,169703,
 brown sugar,168833,
 butter,173410,
 butter beans,174254,"butter beans = large lima beans, canned"
+butternut squash,169295,
 canola oil,172336,
+caraway seed,,spice or herb
 cardamom,,spice or herb
 carrots,170393,
+cashew nuts,170162,
+cashews,170162,
+cassava flour,169717,closest match: tapioca (cassava starch)
+caster sugar,169655,caster sugar = fine granulated sugar
 cayenne pepper,,spice or herb
 celery,169988,
 celery salt,,spice blend
 challots,170499,shallots
+cherry tomatoes,170457,
 chicken,171447,
 chicken breast,171077,
 chicken breasts,171077,
@@ -38,14 +61,20 @@ chicken thighs,172385,
 chicken wings,172390,
 chickpeas,173800,"canned, drained"
 chili powder,,spice or herb
+chilli,170106,fresh red chilli
 chilli flakes,,spice or herb
 chilli powder,,spice or herb
 chinese five spice powder,,spice blend
+chives,169994,fresh
+chopped tomatoes,170051,canned
 chorizo,173859,USDA's only chorizo (raw)
+cilantro,169997,fresh leaves
 cilantro leaves,169997,fresh leaves
 cinnamon,,spice or herb
 cinnamon stick,,spice or herb
+clear honey,169640,
 cloves,,spice or herb
+cocoa,169593,unsweetened cocoa powder
 coconut cream,170580,
 coconut milk,170173,
 cooking wine,169070,
@@ -53,70 +82,106 @@ coriander,169997,fresh leaves
 coriander seeds,,spice or herb
 corn flour,169698,UK name for cornstarch
 cornstarch,169698,
+courgettes,169291,courgette = zucchini
 couscous,169699,
 cream,170858,whipping cream
 creme fraiche,170859,closest match: USDA has no creme fraiche
 cucumber,168409,
+cumin,,spice or herb
 cumin seeds,,spice or herb
 date molasses,168820,closest match: molasses
+diced tomatoes,170051,canned
 dijon mustard,,USDA lists mustard under spices
+dill,,spice or herb
 dried apricots,173941,
 dried dill,,spice or herb
+dried fruit,168165,closest match: raisins
+dried oregano,,spice or herb
 dried white beans,175202,
+dry sherry,175112,dry sherry = dry dessert wine
 dry white wine,174837,
 egg,171287,
+egg plants,169228,eggplant
 egg white,172183,
 egg yolks,172184,
+eggs,171287,
 english mustard,,USDA lists mustard under spices
 extra virgin olive oil,171413,
 farfalle,169736,dry pasta
+farine,169717,farine = cassava meal; closest match: tapioca (cassava starch)
 fennel seeds,,spice or herb
 fenugreek,,spice or herb
+feta,173420,
 fish sauce,174531,
 fish stock,172885,
 flour,168894,
+french lentils,172420,dry lentils
 fresh basil,,spice or herb
 frozen peas,170016,
 frozen seafood mix,175179,closest match: prawns
 garam masala,,spice blend
 garlic,169230,
 garlic clove,169230,
+garlic granules,,spice or herb
 garlic powder,,spice or herb
 ginger,169231,fresh ginger root
 ginger cordial,167957,closest match: fruit syrup
 ginger paste,169231,fresh ginger root
 glutinous rice,168883,
+goose fat,173572,
 granulated sugar,169655,
 greek yogurt,171304,
+green beans,169961,
 green chilli,170497,
 green olives,169096,
+green papaya,169926,closest match: ripe papaya
 green pepper,170427,
 ground allspice,,spice or herb
+ground annatto,,spice or herb
 ground cardomom,,spice or herb
 ground cinnamon,,spice or herb
 ground cumin,,spice or herb
 ground ginger,,spice or herb
+ground nut oil,171410,groundnut oil = peanut oil
+ground pork,167902,
+ground sugar,169656,icing sugar
+haddock,171964,
+haricot beans,173747,"haricot = navy beans, canned"
 harissa spice,,spice blend
 heavy cream,170859,
+hoisin sauce,172886,
 honey,169640,
+hot smoked flaked salmon,175168,closest match: cooked salmon (hot-smoked salmon is cooked)
 hotsauce,174527,
+jalapeno,168576,
 jasmine rice,168877,
+kale,168421,
 kidney beans,175195,"canned, with liquid"
+king prawns,175179,
 kosher salt,,spice or herb
 lamb,172545,generic lamb: composite of retail cuts
+lamb leg,174372,
 lamb mince,174370,
+lamb shoulder,172553,
 lamb stock,172883,closest match: beef stock
 leek,169246,
 lemon,167747,juice
 lemon juice,167747,juice
 lemons,167747,juice
+lentils,172421,cooked: a ready-to-eat pack
 lettuce,169249,
 lime,168156,juice
+madras paste,,curry paste: spice blend
+maple syrup,169661,
+marinated tofu,172475,closest match: firm tofu
 marjoram,,spice or herb
+melted butter,173410,
+milk,171265,whole milk
 minced beef,171796,
 minced garlic,169230,
 minced pork,167902,
 mirin,167723,closest match: sake
+mixed grain,169704,closest match: cooked brown rice (ready-to-eat pouch)
 mozzarella balls,170845,
 mung bean paste,174257,closest match: cooked mung beans
 muscovado sugar,168833,
@@ -133,26 +198,36 @@ orange,169097,
 oregano,,spice or herb
 oyster sauce,174529,
 paella rice,169760,paella rice is medium-grain
+pak choi,170390,
 palm sugar,168833,closest match: brown sugar
 paprika,,spice or herb
 parma ham,167875,closest match: USDA has no prosciutto
+parmesan,170848,
 parsley,170416,fresh
 passata,170460,
 peanut butter,174266,
+peanut oil,171410,
 peanuts,172430,
 peas,170419,
 pepper,,spice or herb
+petit pois,170016,frozen peas
 pickle juice,,"mostly vinegar, which USDA lists under spices"
 pineapple chunks,169126,canned in juice
 pineapple juice,169947,
 plain flour,168894,
 plum tomatoes,170457,
+pork,167888,generic pork: composite of retail cuts
+pork back ribs,168299,
 pork belly slices,167812,
+pork chops,168238,bone-in loin chops
 pork shoulder,167843,
 potato starch,169698,closest match: USDA has no potato starch
 potatoes,170026,
 prawns,175179,
+pretzels,167555,
 puff pastry,172790,
+raspberries,167755,
+raw frozen prawns,175179,
 raw king prawns,175179,
 red chilli,170106,fresh red chilli
 red onions,170000,
@@ -161,50 +236,84 @@ red wine vinegar,,USDA lists vinegar under spices
 rice,168877,
 rice flour,169714,
 rice noodles,169742,
+rice stick noodles,169742,
 rice vinegar,,USDA lists vinegar under spices
+roasted peanut,173806,"dry-roasted, unsalted"
 roasted pepper,168546,closest match: canned red peppers
+roasted vegetables,170471,closest match: frozen mixed vegetables
+rosemary,,spice or herb
+rye,168886,rye flour
 saffron,,spice or herb
 sage,,spice or herb
 sake,167723,
+salmon,175167,farmed Atlantic salmon
 salt,,spice or herb
 scallions,170005,
 scotch bonnet,170106,fresh red chilli
+sea salt,,spice or herb
+self-raising flour,168895,self-raising = self-rising
 sesame seed,170150,
 sesame seed oil,171016,
+shallots,170499,
+sherry vinegar,,USDA lists vinegar under spices
+shiitake mushrooms,169242,
 shortcrust pastry,167932,ready-made pie crust
+shrimp,175179,
+shrimp stock,172885,closest match: fish stock
 sirloin steak,168726,
+smoked paprika,,spice or herb
 smoky aïoli,171009,closest match: mayonnaise
+snow peas,170010,
+sour cream,171257,
+sour milk,170874,closest match: buttermilk
 soy sauce,174277,
+soya bean,168410,frozen soya beans = edamame
 spring onions,170005,
+squash,169295,closest match: butternut squash
 star anise,,spice or herb
 starch,169698,cornstarch
+strong white bread flour,168896,bread flour
 sugar,169655,
+sugar snap peas,170010,
 sun-dried tomatoes,168567,
 sunflower oil,171025,
 sushi rice,168931,sushi rice is short-grain
+sweet potatoes,168482,
 sweet smoked paprika,,spice or herb
+sweetcorn,168398,frozen kernels
+tahini,170189,
 tamarind paste,167763,tamarind pulp
+thai fish sauce,174531,
+thai green curry paste,,curry paste: spice blend
+thai red curry paste,,curry paste: spice blend
 thyme,,spice or herb
 tinned tomatos,170051,
+toast,174925,toasted white bread
 tomato,170457,
 tomato ketchup,168556,
 tomato puree,170460,US-style puree (UK tomato puree is paste)
+tomato purée,170459,UK tomato purée = tomato paste
 tomato sauce,170054,
 tomatoes,170457,
 tuna,171986,canned tuna
 turmeric,,spice or herb
 turmeric powder,,spice or herb
 unsalted butter,173430,
+vanilla extract,,spice or herb
 vegetable oil,171411,vegetable oil = soybean oil
 vegetable stock,171583,
+vegetable stock cube,171613,closest match: bouillon cubes
 vermicelli pasta,169736,dry pasta
 vermicelli rice noodles,169742,
+vinegar,,USDA lists vinegar under spices
 warm water,173647,
 water,173647,
 water chestnut,170067,canned
+white cabbage,169975,
 white vinegar,,USDA lists vinegar under spices
 white wine,174837,
 white wine vinegar,,USDA lists vinegar under spices
 worcestershire sauce,171610,
+yeast,175043,active dry yeast
 yellow pepper,169383,
 yogurt,171284,
