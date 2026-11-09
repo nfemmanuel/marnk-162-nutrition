@@ -42,7 +42,20 @@ Test files go in `app_flask/tests/` and must be named `test_*.py`, or they won't
 
 ## Run it with Docker
 
-Coming with NUT-8 (`docker compose up`).
+You need Docker running (on Windows and macOS, open Docker Desktop first). From the repo root:
+
+```
+docker compose up --build
+```
+
+Then open http://localhost:8000. The container listens on 5000, and Compose maps it to 8000 on your machine, because macOS uses port 5000 for AirPlay. The container runs `init-db` on every start, and the database lives in a Docker volume, so your data stays between restarts. Press Ctrl+C to stop it.
+
+To load the starter data, run these in a second terminal while the app is up:
+
+```
+docker compose exec web flask --app nutrition seed-recipes
+docker compose exec web flask --app nutrition seed-ingredients
+```
 
 ## Deploy
 
