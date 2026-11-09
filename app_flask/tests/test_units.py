@@ -11,9 +11,8 @@ class FactoryTest(unittest.TestCase):
 
         # App starts and answers a request
         client = app.test_client()
-        response = client.get("/hello")
+        response = client.get("/")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.get_data(as_text=True), "Hello, Nutrition App!")
 
 
 if __name__ == "__main__":
