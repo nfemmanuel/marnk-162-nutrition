@@ -48,14 +48,7 @@ You need Docker running (on Windows and macOS, open Docker Desktop first). From 
 docker compose up --build
 ```
 
-Then open http://localhost:8000. The container listens on 5000, and Compose maps it to 8000 on your machine, because macOS uses port 5000 for AirPlay. The container runs `init-db` on every start, and the database lives in a Docker volume, so your data stays between restarts. Press Ctrl+C to stop it.
-
-To load the starter data, run these in a second terminal while the app is up:
-
-```
-docker compose exec web flask --app nutrition seed-recipes
-docker compose exec web flask --app nutrition seed-ingredients
-```
+Then open http://localhost:8000. The container listens on 5000, and Compose maps it to 8000 on your machine, because macOS uses port 5000 for AirPlay. On every start the container creates any missing tables, downloads the 40 starter recipes from TheMealDB (skipping ones it already has) and loads their calories and macros. The database lives in a Docker volume, so your data stays between restarts. Without internet the recipe download is skipped and the app starts with the recipes it already stored. Press Ctrl+C to stop it.
 
 ## Deploy
 
