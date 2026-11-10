@@ -14,6 +14,8 @@ python -m venv .venv
 pip install -r app_flask\requirements.txt
 cd app_flask
 flask --app nutrition init-db
+flask --app nutrition seed-recipes
+flask --app nutrition seed-ingredients
 flask --app nutrition run
 ```
 
@@ -25,10 +27,12 @@ source .venv/bin/activate
 pip install -r app_flask/requirements.txt
 cd app_flask
 flask --app nutrition init-db
+flask --app nutrition seed-recipes
+flask --app nutrition seed-ingredients
 flask --app nutrition run
 ```
 
-Then open http://127.0.0.1:5000. `init-db` creates the database in `app_flask/instance/` (git ignores it) and only adds missing tables, so it's safe to run again.
+Then open http://127.0.0.1:5000. `init-db` creates the database in `app_flask/instance/` (git ignores it) and only adds missing tables, so it's safe to run again. `seed-recipes` downloads the 40 starter recipes from TheMealDB (internet needed, no API key) and skips ones already stored; `seed-ingredients` loads their calories and macros from `nutrition/data/`. Both are safe to run again.
 
 ## Run the tests
 
