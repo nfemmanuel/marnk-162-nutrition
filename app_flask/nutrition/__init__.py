@@ -11,6 +11,7 @@ from flask import Flask
 from .auth import auth_blueprint, login_manager
 from .db import db, init_db_command
 from .macros import seed_ingredients_command
+from .saved import saved_blueprint
 from .seed import seed_recipes_command
 from . import models  # noqa: F401  (loads the tables so the database knows about them)
 
@@ -38,6 +39,7 @@ def create_app(test_config=None):
     # ``login_required`` redirects unauthenticated requests to this endpoint.
     login_manager.login_view = "auth.login"
     app.register_blueprint(auth_blueprint)
+    app.register_blueprint(saved_blueprint)
 
     # Temporary route so we can check the app starts (home page story replaces this)
     @app.route("/hello")
