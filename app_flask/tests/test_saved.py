@@ -9,16 +9,15 @@ import unittest
 
 from app_flask.nutrition import create_app
 from app_flask.nutrition.db import db
-from app_flask.nutrition.models import Recipe
+from app_flask.nutrition.models import Recipe, RecipeIngredient
 from app_flask.nutrition.saved_service import list_saved_recipes, save_recipe
 from app_flask.nutrition.user_service import create_user
 
 
-def add_recipe(name):
-    """Store a recipe with this name and return its ID."""
-    recipe = Recipe(
-        name=name, source="test", source_id=name, source_url="https://example.com/" + name
-    )
+def add_recipe(name, ingredient):
+    """Store a recipe with this name and one ingredient, and return its ID."""
+    recipe = Recipe(name=name, source="test", source_id=name, source_url="")
+    recipe.ingredients.append(RecipeIngredient(name=ingredient, amount="2"))
     db.session.add(recipe)
     db.session.commit()
     return recipe.id
@@ -37,8 +36,8 @@ class SavedPagesTestCase(unittest.TestCase):
         db.create_all()
         self.ana = create_user("ana@example.com", "secret123").id
         self.ben = create_user("ben@example.com", "secret123").id
-        self.omelette = add_recipe("Omelette")
-        self.pancakes = add_recipe("Pancakes")
+        self.omelette = add_recipe("Omelette", "Eggs")
+        self.pancakes = add_recipe("Pancakes", "Flour")
         self.client = self.app.test_client()
         self.client.post("/login", data={"email": "ana@example.com", "password": "secret123"})
 
@@ -58,14 +57,14 @@ class SavedListTest(SavedPagesTestCase):
     """The /saved page and its Remove button."""
 
     def test_page_lists_my_saved_recipes(self):
-        """The page shows what I saved, with a link to the source recipe."""
+        """The page shows what I saved, with each recipe's ingredients."""
         save_recipe(self.ana, self.omelette)
 
         page = self.client.get("/saved")
 
         self.assertEqual(page.status_code, 200)
         self.assertIn(b"Omelette", page.data)
-        self.assertIn(b'href="https://example.com/Omelette"', page.data)
+        self.assertIn(b"2 Eggs", page.data)
         self.assertNotIn(b"Pancakes", page.data)
 
     def test_page_does_not_show_another_users_recipes(self):
