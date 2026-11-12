@@ -130,6 +130,8 @@ Every summary has the same fields. "Not covered" means the interview didn't get 
 - **Stand-out:** loses track of food until it spoils, but has never tried a pantry app.
 - **For the app:** suggest meals from food they already have, maybe with expiry reminders; no heavy manual tracking.
 
+What we decided from these interviews is in the [synthesis](synthesis.md).
+
 ## Adding an interview
 
 Copy this block, give it the next ID (P8, P9, …), and add a row to both tables above. Put the raw notes or transcript in `raw/` as `p8-yourname-notes.md`, with names removed.
