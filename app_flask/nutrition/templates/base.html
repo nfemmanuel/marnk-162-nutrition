@@ -7,6 +7,7 @@
   <h1>Nutrition App</h1>
   <nav>
     {% if current_user.is_authenticated %}
+      <a href="{{ url_for('saved.saved_list') }}">Saved recipes</a>
       <a href="{{ url_for('auth.account') }}">Account</a>
       <span>{{ current_user.email }}</span>
       <form action="{{ url_for('auth.logout') }}" method="post">
