@@ -1,0 +1,15 @@
+{# A Save button for one recipe. Include it from any page that lists recipes:
+
+     {% include "_save_button.html" %}
+
+   It needs `recipe` (a Recipe) and `saved_ids` (the set from saved_recipe_ids())
+   in the template. Logged-out visitors see nothing. #}
+{% if current_user.is_authenticated %}
+  {% if recipe.id in saved_ids %}
+    <span class="saved">Saved</span>
+  {% else %}
+    <form action="{{ url_for('saved.save', recipe_id=recipe.id) }}" method="post">
+      <button type="submit">Save</button>
+    </form>
+  {% endif %}
+{% endif %}

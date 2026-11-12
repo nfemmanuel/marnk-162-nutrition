@@ -1,4 +1,4 @@
-"""Tests for the saved recipes pages (NUT-39).
+"""Tests for the saved recipes pages (NUT-39, NUT-40).
 
 Each test uses an in-memory database and Flask's test client, so it goes
 through the real routes. Ana is logged in; Ben is a second user.
@@ -7,9 +7,12 @@ Run from the repo root:  python -m unittest discover -s app_flask/tests -t .
 
 import unittest
 
+from flask import render_template
+from flask_login import login_user, logout_user
+
 from app_flask.nutrition import create_app
 from app_flask.nutrition.db import db
-from app_flask.nutrition.models import Recipe, RecipeIngredient
+from app_flask.nutrition.models import Recipe, RecipeIngredient, User
 from app_flask.nutrition.saved_service import list_saved_recipes, save_recipe
 from app_flask.nutrition.user_service import create_user
 
@@ -124,6 +127,92 @@ class SavedListTest(SavedPagesTestCase):
         self.client.post("/logout")
 
         self.assertNotIn(b'href="/saved"', self.client.get("/login").data)
+
+
+class SaveTest(SavedPagesTestCase):
+    """Saving a recipe, and the Save button other pages include."""
+
+    def test_save(self):
+        """Posting to a recipe's save address puts it on my list."""
+        response = self.client.post(f"/saved/{self.omelette}")
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.headers["Location"], "/saved")
+        self.assertEqual(self.saved_names(self.ana), ["Omelette"])
+        self.assertEqual(self.saved_names(self.ben), [])
+
+    def test_save_returns_to_the_page_i_was_on(self):
+        """After saving from another page of the app, I land back on it."""
+        response = self.client.post(
+            f"/saved/{self.omelette}", headers={"Referer": "http://localhost/account"}
+        )
+
+        self.assertEqual(response.headers["Location"], "http://localhost/account")
+
+    def test_save_never_redirects_to_another_website(self):
+        """A request that came from another site goes to my saved recipes instead."""
+        response = self.client.post(
+            f"/saved/{self.omelette}", headers={"Referer": "http://example.com/page"}
+        )
+
+        self.assertEqual(response.headers["Location"], "/saved")
+
+    def test_saving_twice_keeps_one(self):
+        """Saving the same recipe again doesn't fail or duplicate it."""
+        self.client.post(f"/saved/{self.omelette}")
+
+        response = self.client.post(f"/saved/{self.omelette}")
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(self.saved_names(self.ana), ["Omelette"])
+
+    def test_unknown_recipe_is_not_found(self):
+        """Saving a recipe ID that doesn't exist gives a 404."""
+        response = self.client.post("/saved/999")
+
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(self.saved_names(self.ana), [])
+
+    def test_save_needs_login(self):
+        """A logged-out visitor is sent to the login page and nothing is saved."""
+        self.client.post("/logout")
+
+        response = self.client.post(f"/saved/{self.omelette}")
+
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(response.headers["Location"].startswith("/login"))
+        self.assertEqual(self.saved_names(self.ana), [])
+
+    def render_button(self, saved_ids, logged_in=True):
+        """Render the Save button for Omelette and return its HTML."""
+        with self.app.test_request_context():
+            # Set the user here: the login from setUp belongs to the test client
+            if logged_in:
+                login_user(db.session.get(User, self.ana))
+            else:
+                logout_user()
+            recipe = db.session.get(Recipe, self.omelette)
+            return render_template("_save_button.html", recipe=recipe, saved_ids=saved_ids)
+
+    def test_button_offers_to_save(self):
+        """For a recipe I haven't saved, the button posts to its save address."""
+        html = self.render_button(saved_ids=set())
+
+        self.assertIn(f'action="/saved/{self.omelette}"', html)
+        self.assertIn("Save</button>", html)
+
+    def test_button_shows_saved(self):
+        """For a recipe I already saved, there is no form, only "Saved"."""
+        html = self.render_button(saved_ids={self.omelette})
+
+        self.assertNotIn("<form", html)
+        self.assertIn("Saved", html)
+
+    def test_button_is_hidden_when_logged_out(self):
+        """A logged-out visitor gets no button at all."""
+        html = self.render_button(saved_ids=set(), logged_in=False)
+
+        self.assertEqual(html.strip(), "")
 
 
 if __name__ == "__main__":
