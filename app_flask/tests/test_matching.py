@@ -1,4 +1,4 @@
-"""Tests for matching recipes to the user's ingredients (NUT-34).
+"""Tests for matching recipes to the user's ingredients (NUT-34, NUT-36).
 
 Run from the repo root:  python -m unittest discover -s app_flask/tests -t .
 """
@@ -32,6 +32,7 @@ class MatchRecipesTest(unittest.TestCase):
         add_recipe("Omelette", ["Eggs", "Butter"])
         add_recipe("Pancakes", ["Eggs", "Milk", "Flour"])
         add_recipe("Lasagne", ["Pasta", "Beef", "Tomato", "Cheese"])
+        add_recipe("Stuffed Peppers", ["Red Pepper", "Rice", "Salt", "Olive Oil", "Water"])
 
     def tearDown(self):
         """Throw the test database away."""
@@ -82,6 +83,23 @@ class MatchRecipesTest(unittest.TestCase):
         """An empty list, or only blank names, returns nothing."""
         self.assertEqual(match_recipes([]), [])
         self.assertEqual(match_recipes(["  "]), [])
+
+    def test_staples_are_never_missing(self):
+        """Salt, oil and water count as owned without being typed."""
+        results = match_recipes(["Red Pepper", "Rice"])
+
+        self.assertEqual(results[0]["recipe"].name, "Stuffed Peppers")
+        self.assertEqual(results[0]["missing"], [])
+
+    def test_staples_are_exact_names(self):
+        """The staple "pepper" doesn't cover "red pepper"."""
+        results = match_recipes(["Rice"])
+
+        self.assertEqual(results[0]["missing"], ["red pepper"])
+
+    def test_recipe_using_nothing_i_have_is_left_out(self):
+        """A recipe that is only staples plus things I don't have isn't returned."""
+        self.assertNotIn("Stuffed Peppers", self.names(match_recipes(["Eggs"])))
 
 
 if __name__ == "__main__":
