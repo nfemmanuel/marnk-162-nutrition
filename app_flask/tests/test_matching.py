@@ -8,7 +8,7 @@ import unittest
 from app_flask.nutrition import create_app
 from app_flask.nutrition.db import db
 from app_flask.nutrition.matching import match_recipes
-from app_flask.nutrition.models import Recipe, RecipeIngredient
+from app_flask.nutrition.models import Food, Ingredient, Recipe, RecipeIngredient
 
 
 def add_recipe(name, ingredients):
@@ -119,6 +119,28 @@ class MatchRecipesTest(unittest.TestCase):
     def test_longer_name_does_not_cover_a_shorter_one(self):
         """Having "egg yolks" doesn't count as having "Eggs"."""
         self.assertEqual(match_recipes(["egg yolks"]), [])
+
+    def test_two_names_for_the_same_food_match(self):
+        """"egg" covers "Eggs" when the ingredients table gives both the same food."""
+        db.session.add(Food(fdc_id=1, description="Egg", calories=0, protein=0, carbs=0, fat=0))
+        db.session.add(Ingredient(name="egg", fdc_id=1))
+        db.session.add(Ingredient(name="eggs", fdc_id=1))
+        db.session.commit()
+
+        results = match_recipes(["egg", "butter"])
+
+        self.assertEqual(results[0]["recipe"].name, "Omelette")
+        self.assertEqual(results[0]["missing"], [])
+
+    def test_names_without_a_food_do_not_match_each_other(self):
+        """Two spices have no food, and that doesn't make them the same ingredient."""
+        db.session.add(Ingredient(name="cumin", fdc_id=None))
+        db.session.add(Ingredient(name="butter", fdc_id=None))
+        db.session.commit()
+
+        results = match_recipes(["eggs", "cumin"])
+
+        self.assertEqual(results[0]["missing"], ["butter"])
 
 
 if __name__ == "__main__":

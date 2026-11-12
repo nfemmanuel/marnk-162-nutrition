@@ -2,13 +2,14 @@
 
 Matching compares names, ignoring case and spaces at either end. A name the
 user types also covers a longer recipe name that contains all of its words, so
-"chicken" covers "chicken breast" (NUT-36). A recipe
+"chicken" covers "chicken breast", and two names for the same USDA food cover
+each other, so "egg" covers "eggs" (NUT-36). A recipe
 qualifies when it uses at least one of the user's ingredients and needs at most
 MAX_MISSING more. Staples are never counted as missing (NUT-36).
 """
 
 from .db import db
-from .models import Recipe
+from .models import Ingredient, Recipe
 
 MAX_MISSING = 2
 
@@ -36,14 +37,26 @@ def clean(name):
     return name.strip().lower()
 
 
-def covers(mine, needed):
+def food_ids():
+    """Return a dictionary from ingredient name to its USDA food ID.
+
+    Names without a food (spices) are left out, so two spices never look alike.
+    """
+    rows = db.session.execute(db.select(Ingredient)).scalars()
+    return {row.name: row.fdc_id for row in rows if row.fdc_id is not None}
+
+
+def covers(mine, needed, foods):
     """Return whether an ingredient the user has counts as one a recipe needs.
 
-    Both names are already clean. They match when they are equal, or when every
-    word the user typed is a word of the recipe's name. Whole words only:
-    "egg" covers "egg yolks" but not "eggplant".
+    Both names are already clean, and `foods` comes from food_ids(). They match
+    when they are equal, when every word the user typed is a word of the
+    recipe's name ("egg" covers "egg yolks" but not "eggplant"), or when both
+    names point to the same USDA food ("onion" and "red onions").
     """
-    return set(mine.split()) <= set(needed.split())
+    if set(mine.split()) <= set(needed.split()):
+        return True
+    return mine in foods and foods[mine] == foods.get(needed)
 
 
 def match_recipes(have):
@@ -58,13 +71,14 @@ def match_recipes(have):
     if not have:
         return []
 
+    foods = food_ids()
     matches = []
     for recipe in db.session.execute(db.select(Recipe)).scalars():
         needed = {clean(item.name) for item in recipe.ingredients}
         missing = []
         used = 0
         for name in sorted(needed):
-            if any(covers(mine, name) for mine in have):
+            if any(covers(mine, name, foods) for mine in have):
                 used += 1
             elif name not in STAPLES:
                 missing.append(name)
