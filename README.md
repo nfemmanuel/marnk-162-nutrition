@@ -14,6 +14,8 @@ python -m venv .venv
 pip install -r app_flask\requirements.txt
 cd app_flask
 flask --app nutrition init-db
+flask --app nutrition seed-recipes
+flask --app nutrition seed-ingredients
 flask --app nutrition run
 ```
 
@@ -25,10 +27,12 @@ source .venv/bin/activate
 pip install -r app_flask/requirements.txt
 cd app_flask
 flask --app nutrition init-db
+flask --app nutrition seed-recipes
+flask --app nutrition seed-ingredients
 flask --app nutrition run
 ```
 
-Then open http://127.0.0.1:5000. `init-db` creates the database in `app_flask/instance/` (git ignores it) and only adds missing tables, so it's safe to run again.
+Then open http://127.0.0.1:5000. `init-db` creates the database in `app_flask/instance/` (git ignores it) and only adds missing tables, so it's safe to run again. `seed-recipes` downloads the 40 starter recipes from TheMealDB (internet needed, no API key) and skips ones already stored; `seed-ingredients` loads their calories and macros from `nutrition/data/`. Both are safe to run again.
 
 ## Run the tests
 
@@ -42,7 +46,13 @@ Test files go in `app_flask/tests/` and must be named `test_*.py`, or they won't
 
 ## Run it with Docker
 
-Coming with NUT-8 (`docker compose up`).
+You need Docker running (on Windows and macOS, open Docker Desktop first). From the repo root:
+
+```
+docker compose up --build
+```
+
+Then open http://localhost:8000. The container listens on 5000, and Compose maps it to 8000 on your machine, because macOS uses port 5000 for AirPlay. On every start the container creates any missing tables, downloads the 40 starter recipes from TheMealDB (skipping ones it already has) and loads their calories and macros. The database lives in a Docker volume, so your data stays between restarts. Without internet the recipe download is skipped and the app starts with the recipes it already stored. Press Ctrl+C to stop it.
 
 ## Deploy
 

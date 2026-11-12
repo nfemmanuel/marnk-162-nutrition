@@ -1,0 +1,5 @@
+.git
+.venv
+.history
+**/__pycache__
+**/instance
