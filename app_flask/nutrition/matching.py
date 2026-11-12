@@ -1,6 +1,8 @@
 """Find the recipes a user can cook from the ingredients they already have (NUT-34).
 
-Matching compares names only, ignoring case and spaces at either end. A recipe
+Matching compares names, ignoring case and spaces at either end. A name the
+user types also covers a longer recipe name that contains all of its words, so
+"chicken" covers "chicken breast" (NUT-36). A recipe
 qualifies when it uses at least one of the user's ingredients and needs at most
 MAX_MISSING more. Staples are never counted as missing (NUT-36).
 """
@@ -34,6 +36,16 @@ def clean(name):
     return name.strip().lower()
 
 
+def covers(mine, needed):
+    """Return whether an ingredient the user has counts as one a recipe needs.
+
+    Both names are already clean. They match when they are equal, or when every
+    word the user typed is a word of the recipe's name. Whole words only:
+    "egg" covers "egg yolks" but not "eggplant".
+    """
+    return set(mine.split()) <= set(needed.split())
+
+
 def match_recipes(have):
     """Return the recipes the user can make from `have`, a list of ingredient names.
 
@@ -49,8 +61,13 @@ def match_recipes(have):
     matches = []
     for recipe in db.session.execute(db.select(Recipe)).scalars():
         needed = {clean(item.name) for item in recipe.ingredients}
-        missing = sorted(needed - have - STAPLES)
-        used = len(needed & have)
+        missing = []
+        used = 0
+        for name in sorted(needed):
+            if any(covers(mine, name) for mine in have):
+                used += 1
+            elif name not in STAPLES:
+                missing.append(name)
         # Without `used`, a recipe of staples plus two other things would match anyone
         if used and len(missing) <= MAX_MISSING:
             matches.append((len(missing), -used, recipe.name, recipe, missing))

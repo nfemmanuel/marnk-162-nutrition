@@ -32,6 +32,7 @@ class MatchRecipesTest(unittest.TestCase):
         add_recipe("Omelette", ["Eggs", "Butter"])
         add_recipe("Pancakes", ["Eggs", "Milk", "Flour"])
         add_recipe("Lasagne", ["Pasta", "Beef", "Tomato", "Cheese"])
+        add_recipe("Chicken Curry", ["Chicken Breast", "Eggplant", "Curry Paste", "Coconut Milk"])
         add_recipe("Stuffed Peppers", ["Red Pepper", "Rice", "Salt", "Olive Oil", "Water"])
 
     def tearDown(self):
@@ -100,6 +101,24 @@ class MatchRecipesTest(unittest.TestCase):
     def test_recipe_using_nothing_i_have_is_left_out(self):
         """A recipe that is only staples plus things I don't have isn't returned."""
         self.assertNotIn("Stuffed Peppers", self.names(match_recipes(["Eggs"])))
+
+    def test_partial_name_matches_whole_words(self):
+        """"chicken" covers "Chicken Breast", and "curry paste" still matches itself."""
+        results = match_recipes(["chicken", "curry paste"])
+
+        self.assertEqual(results[0]["recipe"].name, "Chicken Curry")
+        self.assertEqual(results[0]["missing"], ["coconut milk", "eggplant"])
+
+    def test_partial_name_needs_a_whole_word(self):
+        """"egg" doesn't cover "Eggplant"."""
+        results = match_recipes(["chicken", "curry paste", "coconut milk", "egg"])
+
+        self.assertEqual(results[0]["recipe"].name, "Chicken Curry")
+        self.assertEqual(results[0]["missing"], ["eggplant"])
+
+    def test_longer_name_does_not_cover_a_shorter_one(self):
+        """Having "egg yolks" doesn't count as having "Eggs"."""
+        self.assertEqual(match_recipes(["egg yolks"]), [])
 
 
 if __name__ == "__main__":
