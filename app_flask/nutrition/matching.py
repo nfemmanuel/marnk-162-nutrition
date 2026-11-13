@@ -2,6 +2,7 @@
 
 Matching compares names only, ignoring case and spaces at either end. A recipe
 qualifies when it needs at most MAX_MISSING ingredients the user doesn't have.
+An empty list of ingredients returns no recipes, since there is nothing to match.
 """
 
 from .db import db

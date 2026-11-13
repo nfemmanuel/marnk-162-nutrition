@@ -37,6 +37,7 @@ class MatchRecipesTest(unittest.TestCase):
         """Throw the test database away."""
         db.session.remove()
         db.drop_all()
+        db.engine.dispose()  # Closes the SQLite connection the pool keeps open
         self.context.pop()
 
     def names(self, results):
@@ -71,6 +72,15 @@ class MatchRecipesTest(unittest.TestCase):
     def test_tie_goes_to_the_recipe_using_more_of_what_i_have(self):
         """With the same number missing, the recipe using more of my ingredients comes first."""
         self.assertEqual(self.names(match_recipes(["Eggs", "Milk"])), ["Pancakes", "Omelette"])
+
+    def test_full_tie_goes_in_alphabetical_order(self):
+        """Same number missing and used: alphabetical, whatever order they were stored in."""
+        add_recipe("Zucchini Toast", ["Bread", "Zucchini"])
+        add_recipe("Apple Toast", ["Bread", "Apple"])
+
+        results = self.names(match_recipes(["Bread"]))
+
+        self.assertEqual(results[:2], ["Apple Toast", "Zucchini Toast"])
 
     def test_ignores_case_and_spaces(self):
         """'  eggs ' matches 'Eggs'."""
