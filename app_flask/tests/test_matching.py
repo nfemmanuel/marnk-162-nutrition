@@ -102,6 +102,10 @@ class MatchRecipesTest(unittest.TestCase):
         """A recipe that is only staples plus things I don't have isn't returned."""
         self.assertNotIn("Stuffed Peppers", self.names(match_recipes(["Eggs"])))
 
+    def test_typing_only_a_staple_matches_nothing(self):
+        """A pantry of just "salt" doesn't match the recipes that use salt."""
+        self.assertEqual(match_recipes(["Salt"]), [])
+
     def test_partial_name_matches_whole_words(self):
         """"chicken" covers "Chicken Breast", and "curry paste" still matches itself."""
         results = match_recipes(["chicken", "curry paste"])

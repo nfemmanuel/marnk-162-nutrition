@@ -5,7 +5,7 @@ user types also covers a longer recipe name that contains all of its words, so
 "chicken" covers "chicken breast", and two names for the same USDA food cover
 each other, so "egg" covers "eggs" (NUT-36). A recipe
 qualifies when it uses at least one of the user's ingredients and needs at most
-MAX_MISSING more. Staples are never counted as missing (NUT-36).
+MAX_MISSING more. Staples are never counted as missing or as used (NUT-36).
 """
 
 from .db import db
@@ -78,11 +78,14 @@ def match_recipes(have):
         missing = []
         used = 0
         for name in sorted(needed):
+            if name in STAPLES:
+                continue
             if any(covers(mine, name, foods) for mine in have):
                 used += 1
-            elif name not in STAPLES:
+            else:
                 missing.append(name)
-        # Without `used`, a recipe of staples plus two other things would match anyone
+        # Staples don't count as used, or typing only "salt" would match a recipe
+        # of salt plus two other things
         if used and len(missing) <= MAX_MISSING:
             matches.append((len(missing), -used, recipe.name, recipe, missing))
 
