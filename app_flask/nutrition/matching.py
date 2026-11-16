@@ -6,6 +6,7 @@ user types also covers a longer recipe name that contains all of its words, so
 each other, so "egg" covers "eggs" (NUT-36). A recipe
 qualifies when it uses at least one of the user's ingredients and needs at most
 MAX_MISSING more. Staples are never counted as missing or as used (NUT-36).
+An empty list of ingredients returns no recipes, since there is nothing to match.
 """
 
 from .db import db
