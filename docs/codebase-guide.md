@@ -1,5 +1,5 @@
 # Codebase guide
-nMirrored in Confluence: https://marnk-162.atlassian.net/wiki/spaces/SD/pages/43515905/Codebase+guide
+Mirrored in Confluence: https://marnk-162.atlassian.net/wiki/spaces/SD/pages/43515905/Codebase+guide
 
 This is the running map of the code on `main`, agreed at the Nov 10 standup. Read it to learn the code on your own time. Whoever merges a PR that adds or moves a file updates this page in the same PR.
 
