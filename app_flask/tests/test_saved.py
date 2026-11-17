@@ -93,6 +93,17 @@ class SavedListTest(SavedPagesTestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.headers["Location"], "/login?next=%2Fsaved")
 
+    def test_remove_needs_login(self):
+        """A logged-out remove request goes to the login page and keeps the recipe."""
+        save_recipe(self.ana, self.omelette)
+        self.client.post("/logout")
+
+        response = self.client.post(f"/saved/{self.omelette}/remove")
+
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(response.headers["Location"].startswith("/login"))
+        self.assertEqual(self.saved_names(self.ana), ["Omelette"])
+
     def test_remove(self):
         """Remove takes the recipe off my list and returns to the page."""
         save_recipe(self.ana, self.omelette)
