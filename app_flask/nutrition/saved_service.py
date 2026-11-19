@@ -8,15 +8,16 @@ user's saved recipes are never read or changed for another.
 from sqlalchemy.exc import IntegrityError
 
 from .db import db
-from .models import Recipe, SavedRecipe
+from .models import Recipe, SavedRecipe, User
 
 
 def save_recipe(user_id, recipe_id):
-    """Save a recipe for a user. Return False when the recipe doesn't exist.
+    """Save a recipe for a user. Return False when the user or recipe doesn't exist.
 
     Saving a recipe that is already saved changes nothing and returns True.
     """
-    if db.session.get(Recipe, recipe_id) is None:
+    # SQLite doesn't check foreign keys by default, so check both IDs here
+    if db.session.get(User, user_id) is None or db.session.get(Recipe, recipe_id) is None:
         return False
     if db.session.get(SavedRecipe, (user_id, recipe_id)) is not None:
         return True
@@ -25,8 +26,11 @@ def save_recipe(user_id, recipe_id):
     try:
         db.session.commit()
     except IntegrityError:
-        # Two requests saved it at the same moment; the other one's row is enough
+        # Two requests saved it at the same moment; the other one's row is enough.
+        # If there is no row, the error was something else, so pass it on.
         db.session.rollback()
+        if db.session.get(SavedRecipe, (user_id, recipe_id)) is None:
+            raise
     return True
 
 
