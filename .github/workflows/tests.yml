@@ -7,19 +7,23 @@ on:
 
 jobs:
     test:
-        # Runs on NF's PC (self-hosted runner "nf-pc") while GitHub-hosted runners are unavailable.
+        # Runs on NF's tablet (self-hosted runner "nf-tablet", Linux) while GitHub-hosted runners are unavailable.
+        # The PC runner was blocked by Windows Application Control.
         # Only PRs from branches in this repo run here, never PRs from forks.
         if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
-        runs-on: [self-hosted, nf-pc]
+        runs-on: [self-hosted, nf-tablet]
+        defaults:
+            run:
+                shell: bash
         steps:
             - uses: actions/checkout@v4
 
-            # Uses the Python already installed on the PC, in a fresh virtual environment each run
+            # Uses the python3 already installed on the tablet, in a fresh virtual environment each run
             - name: Create a virtual environment
-              run: python -m venv .ci-venv
+              run: python3 -m venv .ci-venv
 
             - name: Install dependencies
-              run: .ci-venv/Scripts/python -m pip install -r app_flask/requirements.txt
+              run: .ci-venv/bin/python -m pip install -r app_flask/requirements.txt
 
             - name: Run tests
-              run: .ci-venv/Scripts/python -m unittest discover -s app_flask/tests -t . -v
+              run: .ci-venv/bin/python -m unittest discover -s app_flask/tests -t . -v

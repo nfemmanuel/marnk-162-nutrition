@@ -80,3 +80,19 @@ class Ingredient(db.Model):
 
     name = db.Column(db.String(120), primary_key=True)
     fdc_id = db.Column(db.Integer, db.ForeignKey("foods.fdc_id"))
+
+
+class SavedRecipe(db.Model):
+    """A recipe a user saved so they can find it again.
+
+    One row links one user to one recipe. The pair is the primary key, so the
+    database itself refuses to save the same recipe twice for one user.
+    """
+
+    __tablename__ = "saved_recipes"
+
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), primary_key=True)
+    recipe_id = db.Column(db.Integer, db.ForeignKey("recipes.id"), primary_key=True)
+    created_at = db.Column(
+        db.DateTime, nullable=False, default=lambda: datetime.now(timezone.utc)
+    )
