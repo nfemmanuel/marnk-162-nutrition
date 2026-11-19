@@ -120,6 +120,12 @@ class SavedServiceTest(SavedRecipeTestCase):
 
         self.assertEqual(self.names(self.ana), [])
 
+    def test_saving_for_an_unknown_user_is_refused(self):
+        """A user ID that isn't in the database gets nothing saved."""
+        self.assertFalse(save_recipe(999, self.omelette))
+
+        self.assertEqual(self.names(999), [])
+
     def test_remove(self):
         """Removing takes the recipe off the list and says it was there."""
         save_recipe(self.ana, self.omelette)

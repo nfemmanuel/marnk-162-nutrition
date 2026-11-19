@@ -56,7 +56,35 @@ Then open http://localhost:8000. The container listens on 5000, and Compose maps
 
 ## Deploy
 
-Coming with NUT-32 (public URL and redeploy steps).
+The testing deployment is hosted on PythonAnywhere's free tier. Until the home
+page is merged, open the registration page directly:
+
+https://muya123.pythonanywhere.com/register
+
+The live deployment has been verified with all 40 starter recipes and their
+ingredient data loaded.
+
+To redeploy the latest `main`, open a PythonAnywhere Bash console and run:
+
+```bash
+cd /home/muya123/marnk-162-nutrition
+git pull --ff-only origin main
+source .venv/bin/activate
+python -m pip install -r app_flask/requirements.txt
+python -m unittest discover -s app_flask/tests -t . -v
+cd app_flask
+flask --app nutrition init-db
+flask --app nutrition seed-recipes
+flask --app nutrition seed-ingredients
+```
+
+Then reload `muya123.pythonanywhere.com` from the PythonAnywhere **Web** page.
+The deployment costs $0 on the free tier. Its SQLite database persists across
+application reloads and code redeployments, and the free web app must be
+renewed monthly from the PythonAnywhere dashboard.
+
+The production `SECRET_KEY` is stored on PythonAnywhere outside the repository
+and must never be committed.
 
 ## Repo layout
 
