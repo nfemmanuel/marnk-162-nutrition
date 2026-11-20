@@ -1,4 +1,4 @@
-# ADR-000: Styling framework
+# ADR-002: Styling framework
 
 | Area | Decision | Rationale |
 |---|---|---|
