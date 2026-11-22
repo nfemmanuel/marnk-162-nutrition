@@ -9,6 +9,7 @@ import os
 from flask import Flask
 
 from .auth import auth_blueprint, login_manager
+from .cook import cook_bp
 from .db import db, init_db_command
 from .home import home_bp
 from .macros import seed_ingredients_command
@@ -41,6 +42,7 @@ def create_app(test_config=None):
     login_manager.login_view = "auth.login"
     app.register_blueprint(auth_blueprint)
     app.register_blueprint(home_bp)
+    app.register_blueprint(cook_bp)
     app.register_blueprint(saved_blueprint)
 
     # Temporary route so we can check the app starts (home page story replaces this)

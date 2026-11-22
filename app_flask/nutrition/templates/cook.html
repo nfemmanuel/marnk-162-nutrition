@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}What can I cook{% endblock %}
+
+{% block content %}
+<main>
+  <h2>What can I cook?</h2>
+  <form method="post">
+    <label for="ingredients">Ingredients you have (separate with commas or new lines)</label>
+    <textarea id="ingredients" name="ingredients" rows="4" placeholder="chicken, onion, rice">{{ text }}</textarea>
+    <button type="submit">Find recipes</button>
+  </form>
+
+  {% if empty %}
+    <p>Enter at least one ingredient.</p>
+  {% elif results is not none %}
+    {% if results %}
+      {% for result in results %}
+        {% set recipe = result.recipe %}
+        <article>
+          <h3>{{ recipe.name }}</h3>
+          {% if result.missing %}
+            <p>Still needed: {{ result.missing | join(", ") }}</p>
+          {% else %}
+            <p>You have everything.</p>
+          {% endif %}
+          {% include "_save_button.html" %}
+        </article>
+      {% endfor %}
+    {% else %}
+      <p>No recipes yet for those ingredients.</p>
+    {% endif %}
+  {% endif %}
+</main>
+{% endblock %}
