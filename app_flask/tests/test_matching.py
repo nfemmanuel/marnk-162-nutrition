@@ -146,15 +146,27 @@ class MatchRecipesTest(unittest.TestCase):
         self.assertEqual(results[0]["recipe"].name, "Omelette")
         self.assertEqual(results[0]["missing"], [])
 
-    def test_names_without_a_food_do_not_match_each_other(self):
-        """Two spices have no food, and that doesn't make them the same ingredient."""
+    def add_spices(self):
+        """Store cumin and paprika as spices (no USDA food) and a recipe that uses them."""
         db.session.add(Ingredient(name="cumin", fdc_id=None))
-        db.session.add(Ingredient(name="butter", fdc_id=None))
+        db.session.add(Ingredient(name="paprika", fdc_id=None))
         db.session.commit()
+        add_recipe("Spiced Rice", ["Rice", "Cumin", "Paprika"])
 
-        results = match_recipes(["eggs", "cumin"])
+    def test_spices_are_never_missing(self):
+        """Spices are a taste choice, so a recipe isn't missing them (Nov 17 standup)."""
+        self.add_spices()
 
-        self.assertEqual(results[0]["missing"], ["butter"])
+        results = match_recipes(["rice"])
+
+        self.assertEqual(results[0]["recipe"].name, "Spiced Rice")
+        self.assertEqual(results[0]["missing"], [])
+
+    def test_typing_only_a_spice_matches_nothing(self):
+        """Spices don't count as used either, like staples."""
+        self.add_spices()
+
+        self.assertNotIn("Spiced Rice", self.names(match_recipes(["cumin"])))
 
 
 if __name__ == "__main__":
