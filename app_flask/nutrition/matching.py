@@ -5,7 +5,8 @@ user types also covers a longer recipe name that contains all of its words, so
 "chicken" covers "chicken breast", and two names for the same USDA food cover
 each other, so "egg" covers "eggs" (NUT-36). A recipe
 qualifies when it uses at least one of the user's ingredients and needs at most
-MAX_MISSING more. Staples are never counted as missing or as used (NUT-36).
+MAX_MISSING more. Staples and spices (ingredients with no USDA food) are never
+counted as missing or as used (NUT-36, NUT-29).
 An empty list of ingredients returns no recipes, since there is nothing to match.
 """
 
@@ -73,13 +74,19 @@ def match_recipes(have):
         return []
 
     foods = food_ids()
+    # Spices are ingredients with no USDA food. Like staples, they are never
+    # missing and never used (agreed at the Nov 17 standup)
+    spices = set(db.session.execute(
+        db.select(Ingredient.name).where(Ingredient.fdc_id.is_(None))
+    ).scalars())
+    skip = STAPLES | spices
     matches = []
     for recipe in db.session.execute(db.select(Recipe)).scalars():
         needed = {clean(item.name) for item in recipe.ingredients}
         missing = []
         used = 0
         for name in sorted(needed):
-            if name in STAPLES:
+            if name in skip:
                 continue
             if any(covers(mine, name, foods) for mine in have):
                 used += 1
